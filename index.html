@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" class="scroll-smooth dark">
+<html lang="en" class="scroll-smooth">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -8,12 +8,11 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <style>
-    :root{ --brand:#6C5CE7; --accent:#FFB020; }             /* light mode: purple + amber */
-    html.dark{ --brand:#EF4444; --accent:#FFFFFF; }         /* dark mode: red + white */
+    :root{ --brand:#6C5CE7; --accent:#FFB020; }             /* light: purple + amber */
+    html.dark{ --brand:#EF4444; --accent:#FFFFFF; }         /* dark: red + white */
     body{ font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
     .card{ transition: transform .25s ease, box-shadow .25s ease; }
     .card:hover{ transform: translateY(-3px); box-shadow: 0 15px 35px rgba(0,0,0,.1); }
-    .blob{ filter: blur(30px); opacity:.35; }
   </style>
 </head>
 <body class="bg-white text-slate-900 dark:bg-black dark:text-white">
@@ -27,7 +26,7 @@
 
       <!-- Nav -->
       <nav class="hidden md:flex gap-6 text-sm font-semibold">
-        <a href="#about" class="hover:text-[color:var(--brand)]">About</a>
+        <a href="#about" class="hover:text-[color:var(--brand)]">Education</a>
         <a href="#projects" class="hover:text-[color:var(--brand)]">Projects</a>
         <a href="#skills" class="hover:text-[color:var(--brand)]">Skills</a>
         <a href="#experience" class="hover:text-[color:var(--brand)]">Experience</a>
@@ -41,81 +40,81 @@
           Contact Me!
         </a>
 
-        <!-- Theme toggle switch -->
+        <!-- Clean theme toggle switch (no icons) -->
         <label for="themeToggle" class="inline-flex items-center cursor-pointer select-none" title="Toggle dark/light theme">
-          <input id="themeToggle" type="checkbox" class="sr-only peer" aria-label="Toggle dark mode">
-          <div class="w-11 h-6 rounded-full bg-slate-300 dark:bg-white/20 peer-checked:bg-[color:var(--brand)] transition-colors relative">
-            <div class="absolute top-1 left-1 h-4 w-4 rounded-full bg-white dark:bg-white translate-x-0 peer-checked:translate-x-5 transition-transform"></div>
-          </div>
-          <span class="ml-2 text-sm text-slate-600 dark:text-slate-300">Theme</span>
+        <input id="themeToggle" type="checkbox" class="sr-only peer" aria-label="Toggle dark mode">
+            <div
+                class="relative w-14 h-8 rounded-full
+                    bg-slate-300 dark:bg-white/20 transition-colors
+                    peer-checked:bg-[color:var(--brand)]
+                    after:content-[''] after:absolute after:top-1 after:left-1 after:h-6 after:w-6
+                    after:rounded-full after:bg-white after:transition-transform
+                    peer-checked:after:translate-x-6">
+            </div>
+        <span class="ml-2 text-sm text-slate-600 dark:text-slate-300">Theme</span>
         </label>
       </div>
     </div>
   </header>
 
-<!-- Hero -->
-<section class="relative overflow-hidden bg-white dark:bg-black">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 py-20 grid md:grid-cols-2 gap-12 items-center">
-    <!-- Text column -->
-    <div class="md:pr-8">
-      <span class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-[color:var(--brand)]">
-        Computer Science (AI)
-      </span>
-      <h1 class="mt-3 text-4xl sm:text-5xl font-extrabold leading-tight">
-        Hi, I’m <span class="text-[color:var(--brand)]">Shanuka Samarakone</span><br/>
-        Aspiring Software Engineer & AI Graduate
-      </h1>
+  <!-- Hero -->
+  <section class="relative overflow-hidden bg-white dark:bg-black">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-20 grid md:grid-cols-2 gap-12 items-center">
+      <!-- Text column -->
+      <div class="md:pr-8">
+        <span class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-[color:var(--brand)]">
+          Computer Science (AI)
+        </span>
+        <h1 class="mt-3 text-4xl sm:text-5xl font-extrabold leading-tight">
+          Hi, I’m <span class="text-[color:var(--brand)]">Shanuka Samarakone</span><br/>
+          Aspiring Software Engineer & AI Graduate
+        </h1>
 
-      <p class="mt-4 text-slate-600 dark:text-slate-300 max-w-prose text-justify leading-relaxed">
-        Recent BSc (Hons) Computer Science (Artificial Intelligence) graduate from Brunel University London (2:1).
-        Passionate about software engineering and AI, with hands-on experience across academic projects (including an AI-driven
-        music therapy app and a 2D platformer). Strong foundation in programming, system design and Agile project managment.
-      </p>
+        <p class="mt-4 text-slate-600 dark:text-slate-300 max-w-prose text-justify leading-relaxed">
+          Recent BSc (Hons) Computer Science (Artificial Intelligence) graduate from Brunel University London (2:1).
+          Passionate about software engineering and AI, with hands-on experience across academic projects (including an
+          AI-driven music therapy app and a 2D platformer). Strong foundation in programming, system design and Agile
+          project management.
+        </p>
 
-      <div class="mt-6 flex flex-wrap gap-3">
-        <a href="./cv.pdf" class="rounded-xl px-5 py-3 bg-[color:var(--brand)] text-white font-semibold">Download CV</a>
-        <a href="#projects" class="rounded-xl px-5 py-3 border font-semibold border-slate-300 dark:border-white/20">View Projects</a>
+        <div class="mt-6 flex flex-wrap gap-3">
+          <a href="./cv.pdf" class="rounded-xl px-5 py-3 bg-[color:var(--brand)] text-white font-semibold">Download CV</a>
+          <a href="#projects" class="rounded-xl px-5 py-3 border font-semibold border-slate-300 dark:border-white/20">View Projects</a>
+        </div>
+
+        <div class="mt-6 flex items-center gap-4 text-sm">
+          <a href="mailto:shanuka.samarakone@gmail.com" class="underline">Email</a>
+          <a href="https://linkedin.com/in/shanukasamarakone" class="underline">LinkedIn</a>
+          <a href="https://github.com/Shanuka-Samarakone" class="underline">GitHub</a>
+        </div>
       </div>
 
-      <div class="mt-6 flex items-center gap-4 text-sm">
-        <a href="mailto:shanuka.samarakone@gmail.com" class="underline">Email</a>
-        <a href="https://linkedin.com/in/shanukasamarakone" class="underline">LinkedIn</a>
-        <a href="https://github.com/Shanuka-Samarakone" class="underline">GitHub</a>
+      <!-- Image column (single-color frame via --brand) -->
+      <div class="relative md:pl-8 lg:pl-16">
+        <div class="rounded-[28px] p-2 bg-[color:var(--brand)] translate-x-2 md:translate-x-6">
+          <img src="./assets/profile.jpg"
+               onerror="this.onerror=null;this.src='https://placehold.co/800x1000?text=Your+Photo';"
+               alt="Shanuka Samarakone"
+               class="rounded-[24px] aspect-[4/5] object-cover w-full bg-slate-200" />
+        </div>
       </div>
     </div>
-
-    <!-- Image column (single-color frame; purple light / red dark via --brand) -->
-    <div class="relative md:pl-8 lg:pl-16">
-      <div class="rounded-[28px] p-2 bg-[color:var(--brand)] translate-x-2 md:translate-x-6">
-        <img src="./assets/profile.jpg"
-             onerror="this.onerror=null;this.src='https://placehold.co/800x1000?text=Your+Photo';"
-             alt="Shanuka Samarakone"
-             class="rounded-[24px] aspect-[4/5] object-cover w-full bg-slate-200" />
-      </div>
-    </div>
-  </div>
-</section>
+  </section>
 
   <!-- Education -->
-<section id="about" class="bg-white dark:bg-black">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 py-16">
-    <div class="grid md:grid-cols-3 gap-10">
-      <!-- Heading -->
-      <div class="md:col-span-1 text-left">
-        <h2 class="text-2xl font-extrabold">Education</h2>
-        <p class="mt-2 text-sm text-slate-500 dark:text-slate-400">Degrees, grades & dates</p>
-      </div>
+  <section id="about" class="bg-slate-50 dark:bg-zinc-900">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-16">
+      <h2 class="text-2xl font-extrabold">Education</h2>
 
-      <!-- Content -->
-      <div class="md:col-span-2 space-y-6">
+      <div class="mt-8 space-y-6">
         <!-- Degree -->
-        <div class="rounded-2xl border border-slate-200 dark:border-white/10 p-5">
-          <div class="font-semibold">BSc (Hons) Computer Science (Artificial Intelligence), Brunel University London</div>
+        <div class="rounded-2xl border border-slate-200 dark:border-white/10 p-5 bg-white dark:bg-zinc-950">
+          <div class="font-semibold">BSc (Hons) Computer Science (Artificial Intelligence) — Brunel University London</div>
           <div class="text-sm text-slate-500 dark:text-slate-400">Upper Second-Class Honours (2:1) · 2023–2025</div>
         </div>
 
         <!-- A-Levels -->
-        <div class="rounded-2xl border border-slate-200 dark:border-white/10 p-5">
+        <div class="rounded-2xl border border-slate-200 dark:border-white/10 p-5 bg-white dark:bg-zinc-950">
           <div class="font-semibold">GCE Advanced Level — Trinity College Kandy, Sri Lanka</div>
           <div class="text-sm text-slate-500 dark:text-slate-400">2019–2022</div>
           <p class="mt-2 text-sm text-justify text-slate-700 dark:text-slate-300">
@@ -124,88 +123,16 @@
         </div>
 
         <!-- Certificate -->
-        <div class="rounded-2xl border border-slate-200 dark:border-white/10 p-5">
+        <div class="rounded-2xl border border-slate-200 dark:border-white/10 p-5 bg-white dark:bg-zinc-950">
           <div class="font-semibold">Certificate of Higher Education in Computer Science — NIBM, Sri Lanka</div>
           <div class="text-sm text-slate-500 dark:text-slate-400">2019 · Distinction</div>
         </div>
       </div>
     </div>
-  </div>
-</section>
-
-<!-- Skills -->
-<section id="skills" class="bg-white dark:bg-black">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 py-16">
-    <h2 class="text-2xl font-extrabold">Skills</h2>
-
-    <div class="mt-8 grid lg:grid-cols-2 gap-6">
-      <!-- Languages -->
-      <div class="card rounded-2xl border p-6 border-slate-200 dark:border-white/10 bg-white dark:bg-zinc-950">
-        <h3 class="font-bold">Programming Languages</h3>
-        <div class="mt-3 flex flex-wrap gap-2 text-sm">
-          <span class="px-3 py-1 rounded-full bg-slate-100 dark:bg-zinc-800">Python</span>
-          <span class="px-3 py-1 rounded-full bg-slate-100 dark:bg-zinc-800">Java</span>
-          <span class="px-3 py-1 rounded-full bg-slate-100 dark:bg-zinc-800">JavaScript</span>
-          <span class="px-3 py-1 rounded-full bg-slate-100 dark:bg-zinc-800">Dart</span>
-          <span class="px-3 py-1 rounded-full bg-slate-100 dark:bg-zinc-800">SQL</span>
-          <span class="px-3 py-1 rounded-full bg-slate-100 dark:bg-zinc-800">HTML</span>
-          <span class="px-3 py-1 rounded-full bg-slate-100 dark:bg-zinc-800">CSS</span>
-        </div>
-      </div>
-
-      <!-- Frameworks & Libraries -->
-      <div class="card rounded-2xl border p-6 border-slate-200 dark:border-white/10 bg-white dark:bg-zinc-950">
-        <h3 class="font-bold">Frameworks & Libraries</h3>
-        <div class="mt-3 flex flex-wrap gap-2 text-sm">
-          <span class="px-3 py-1 rounded-full bg-slate-100 dark:bg-zinc-800">React</span>
-          <span class="px-3 py-1 rounded-full bg-slate-100 dark:bg-zinc-800">Flutter</span>
-          <span class="px-3 py-1 rounded-full bg-slate-100 dark:bg-zinc-800">Node.js</span>
-          <span class="px-3 py-1 rounded-full bg-slate-100 dark:bg-zinc-800">Express</span>
-          <span class="px-3 py-1 rounded-full bg-slate-100 dark:bg-zinc-800">Spring Boot</span>
-        </div>
-      </div>
-
-      <!-- Databases -->
-      <div class="card rounded-2xl border p-6 border-slate-200 dark:border-white/10 bg-white dark:bg-zinc-950">
-        <h3 class="font-bold">Databases</h3>
-        <div class="mt-3 flex flex-wrap gap-2 text-sm">
-          <span class="px-3 py-1 rounded-full bg-slate-100 dark:bg-zinc-800">MySQL</span>
-        </div>
-      </div>
-
-      <!-- Tools -->
-      <div class="card rounded-2xl border p-6 border-slate-200 dark:border-white/10 bg-white dark:bg-zinc-950">
-        <h3 class="font-bold">Tools</h3>
-        <div class="mt-3 flex flex-wrap gap-2 text-sm">
-          <span class="px-3 py-1 rounded-full bg-slate-100 dark:bg-zinc-800">Git & GitHub</span>
-          <span class="px-3 py-1 rounded-full bg-slate-100 dark:bg-zinc-800">Postman</span>
-          <span class="px-3 py-1 rounded-full bg-slate-100 dark:bg-zinc-800">Figma</span>
-          <span class="px-3 py-1 rounded-full bg-slate-100 dark:bg-zinc-800">Android Studio</span>
-          <span class="px-3 py-1 rounded-full bg-slate-100 dark:bg-zinc-800">Visual Studio Code</span>
-          <span class="px-3 py-1 rounded-full bg-slate-100 dark:bg-zinc-800">app.diagrams.net</span>
-        </div>
-      </div>
-
-      <!-- Practices -->
-      <div class="card rounded-2xl border p-6 border-slate-200 dark:border-white/10 bg-white dark:bg-zinc-950 lg:col-span-2">
-        <h3 class="font-bold">Practices & Methods</h3>
-        <div class="mt-3 flex flex-wrap gap-2 text-sm">
-          <span class="px-3 py-1 rounded-full bg-slate-100 dark:bg-zinc-800">Agile / Scrum</span>
-          <span class="px-3 py-1 rounded-full bg-slate-100 dark:bg-zinc-800">REST APIs</span>
-          <span class="px-3 py-1 rounded-full bg-slate-100 dark:bg-zinc-800">Unit Testing</span>
-          <span class="px-3 py-1 rounded-full bg-slate-100 dark:bg-zinc-800">ER Modelling</span>
-          <span class="px-3 py-1 rounded-full bg-slate-100 dark:bg-zinc-800">UI/UX Prototyping</span>
-          <span class="px-3 py-1 rounded-full bg-slate-100 dark:bg-zinc-800">Version Control</span>
-          <span class="px-3 py-1 rounded-full bg-slate-100 dark:bg-zinc-800">Teamwork & Leadership</span>
-          <span class="px-3 py-1 rounded-full bg-slate-100 dark:bg-zinc-800">Communication</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+  </section>
 
   <!-- Projects -->
-  <section id="projects" class="bg-slate-50 dark:bg-zinc-900 py-16">
+  <section id="projects" class="bg-white dark:bg-black py-16">
     <div class="max-w-7xl mx-auto px-4 sm:px-6">
       <div class="flex items-end justify-between gap-4">
         <div>
@@ -269,8 +196,80 @@
     </div>
   </section>
 
+  <!-- Skills -->
+  <section id="skills" class="bg-slate-50 dark:bg-zinc-900">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-16">
+      <h2 class="text-2xl font-extrabold">Skills</h2>
+
+      <div class="mt-8 grid lg:grid-cols-2 gap-6">
+        <!-- Programming Languages -->
+        <div class="card rounded-2xl border p-6 border-white/10 bg-zinc-950">
+          <h3 class="font-bold">Programming Languages</h3>
+          <div class="mt-3 flex flex-wrap gap-2 text-sm text-slate-300">
+            <span class="px-3 py-1 rounded-full bg-zinc-800">Python</span>
+            <span class="px-3 py-1 rounded-full bg-zinc-800">Java</span>
+            <span class="px-3 py-1 rounded-full bg-zinc-800">JavaScript</span>
+            <span class="px-3 py-1 rounded-full bg-zinc-800">Dart</span>
+            <span class="px-3 py-1 rounded-full bg-zinc-800">SQL</span>
+            <span class="px-3 py-1 rounded-full bg-zinc-800">HTML</span>
+            <span class="px-3 py-1 rounded-full bg-zinc-800">CSS</span>
+          </div>
+        </div>
+
+        <!-- Frameworks & Libraries -->
+        <div class="card rounded-2xl border p-6 border-white/10 bg-zinc-950">
+          <h3 class="font-bold">Frameworks & Libraries</h3>
+          <div class="mt-3 flex flex-wrap gap-2 text-sm text-slate-300">
+            <span class="px-3 py-1 rounded-full bg-zinc-800">React</span>
+            <span class="px-3 py-1 rounded-full bg-zinc-800">Flutter</span>
+            <span class="px-3 py-1 rounded-full bg-zinc-800">Node.js</span>
+            <span class="px-3 py-1 rounded-full bg-zinc-800">Express</span>
+            <span class="px-3 py-1 rounded-full bg-zinc-800">Spring Boot</span>
+          </div>
+        </div>
+
+        <!-- Databases -->
+        <div class="card rounded-2xl border p-6 border-white/10 bg-zinc-950">
+          <h3 class="font-bold">Databases</h3>
+          <div class="mt-3 flex flex-wrap gap-2 text-sm text-slate-300">
+            <span class="px-3 py-1 rounded-full bg-zinc-800">MySQL</span>
+          </div>
+        </div>
+
+        <!-- Tools -->
+        <div class="card rounded-2xl border p-6 border-white/10 bg-zinc-950">
+          <h3 class="font-bold">Tools</h3>
+          <div class="mt-3 flex flex-wrap gap-2 text-sm text-slate-300">
+            <span class="px-3 py-1 rounded-full bg-zinc-800">Git & GitHub</span>
+            <span class="px-3 py-1 rounded-full bg-zinc-800">Postman</span>
+            <span class="px-3 py-1 rounded-full bg-zinc-800">Figma</span>
+            <span class="px-3 py-1 rounded-full bg-zinc-800">Android Studio</span>
+            <span class="px-3 py-1 rounded-full bg-zinc-800">Visual Studio Code</span>
+            <span class="px-3 py-1 rounded-full bg-zinc-800">app.diagrams.net</span>
+          </div>
+        </div>
+
+        <!-- Soft Skills -->
+        <div class="card rounded-2xl border p-6 border-white/10 bg-zinc-950 lg:col-span-2">
+          <h3 class="font-bold">Soft Skills</h3>
+          <div class="mt-3 flex flex-wrap gap-2 text-sm text-slate-300">
+            <span class="px-3 py-1 rounded-full bg-zinc-800">Teamwork & Leadership</span>
+            <span class="px-3 py-1 rounded-full bg-zinc-800">Communication</span>
+            <span class="px-3 py-1 rounded-full bg-zinc-800">Project Management</span>
+            <span class="px-3 py-1 rounded-full bg-zinc-800">Event Organisation</span>
+            <span class="px-3 py-1 rounded-full bg-zinc-800">Active Listening</span>
+            <span class="px-3 py-1 rounded-full bg-zinc-800">Problem Solving</span>
+            <span class="px-3 py-1 rounded-full bg-zinc-800">Adaptability</span>
+            <span class="px-3 py-1 rounded-full bg-zinc-800">Time Management</span>
+            <span class="px-3 py-1 rounded-full bg-zinc-800">Stakeholder Management</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Experience -->
-  <section id="experience" class="bg-slate-50 dark:bg-zinc-900 py-16">
+  <section id="experience" class="bg-black text-white dark:bg-black dark:text-white py-16">
     <div class="max-w-7xl mx-auto px-4 sm:px-6">
       <h2 class="text-2xl font-extrabold">Experience</h2>
       <div class="mt-8 space-y-6">
@@ -291,7 +290,8 @@
   </section>
 
   <!-- Awards & Leadership -->
-  <section id="awards" class="max-w-7xl mx-auto px-4 sm:px-6 py-16">
+  <section id="awards" class="bg-slate-50 dark:bg-zinc-900">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-16">
     <h2 class="text-2xl font-extrabold">Leadership & Awards</h2>
     <ul class="mt-6 grid sm:grid-cols-2 gap-4 text-sm">
       <li class="card rounded-2xl border p-5 border-slate-200 dark:border-white/10 bg-white dark:bg-zinc-950">
@@ -306,19 +306,19 @@
       <li class="card rounded-2xl border p-5 border-slate-200 dark:border-white/10 bg-white dark:bg-zinc-950">
         Independent Learner Award (2023); Chorister of the Year (2020)
       </li>
-    </ul>
+      </ul>
+    </div>
   </section>
 
   <!-- Contact -->
   <section id="contact" class="bg-gradient-to-b from-white to-slate-50 dark:from-black dark:to-zinc-900 py-16">
     <div class="max-w-7xl mx-auto px-4 sm:px-6">
       <div class="rounded-3xl p-8 md:p-12 border border-slate-200 dark:border-white/10 bg-white dark:bg-zinc-950">
-        <h2 class="text-2xl font-extrabold">Let’s build something</h2>
+        <h2 class="text-2xl font-extrabold">Let’s have a Chat!</h2>
         <p class="mt-2 text-slate-600 dark:text-slate-300">Email me or reach out on LinkedIn.</p>
         <div class="mt-6 flex flex-wrap gap-4">
           <a href="mailto:shanuka.samarakone@gmail.com" class="rounded-xl px-5 py-3 bg-[color:var(--brand)] text-white font-semibold">Email Me</a>
           <a href="https://linkedin.com/in/shanukasamarakone" class="rounded-xl px-5 py-3 border font-semibold border-slate-300 dark:border-white/20">LinkedIn</a>
-          <a href="https://github.com/Shanuka-Samarakone" class="rounded-xl px-5 py-3 border font-semibold border-slate-300 dark:border-white/20">GitHub</a>
         </div>
       </div>
       <p class="mt-6 text-xs text-slate-500 dark:text-slate-400">© <span id="year"></span> Shanuka Samarakone</p>
@@ -332,18 +332,22 @@
     function setMode(mode){
       if(mode === 'dark'){
         root.classList.add('dark');
-        if (toggle) toggle.checked = true;
+        if (toggle) toggle.checked = true;   // knob right
       } else {
         root.classList.remove('dark');
-        if (toggle) toggle.checked = false;
+        if (toggle) toggle.checked = false;  // knob left
       }
       localStorage.theme = mode;
     }
 
-    // Initialize from saved preference (default to dark)
-    setMode(localStorage.theme || 'dark');
+    // Initialize: use saved preference, default to LIGHT
+    if (localStorage.theme === 'dark') {
+      setMode('dark');
+    } else {
+      setMode('light');
+    }
 
-    // Listen for toggle changes
+    // Toggle on click
     if (toggle) {
       toggle.addEventListener('change', () => {
         setMode(toggle.checked ? 'dark' : 'light');
