@@ -1,0 +1,25 @@
+/* Theme variables (used with [color:var(--brand)] in your HTML) */
+:root {
+  --brand: #6c5ce7;   /* light: purple */
+  --accent: #ffb020;  /* light: amber */
+}
+
+html.dark {
+  --brand: #ef4444;   /* dark: red */
+  --accent: #ffffff;  /* dark: white */
+}
+
+/* Base typography (Tailwind handles most styles; this just sets the stack) */
+body {
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+}
+
+/* Reusable card hover effect */
+.card {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+}
