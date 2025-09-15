@@ -36,7 +36,6 @@
 
     <!-- Optional external CSS & JS (your split files) -->
     <link rel="stylesheet" href="./css/styles.css" />
-    <script src="./js/main.js" defer></script>
 
     <style>
       :root {
@@ -59,6 +58,9 @@
         box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
       }
     </style>
+
+    <!-- App JS -->
+    <script src="./js/main.js" defer></script>
   </head>
 
   <!-- Body drives the whole-page theme -->
@@ -76,17 +78,13 @@
         </a>
 
         <!-- Nav (links already target section IDs; smooth via html.scroll-smooth) -->
-        <nav class="hidden md:flex gap-6 text-sm font-semibold">
-          <a href="#about" class="hover:text-[color:var(--brand)]">Education</a>
-          <a href="#projects" class="hover:text-[color:var(--brand)]"
-            >Projects</a
-          >
-          <a href="#skills" class="hover:text-[color:var(--brand)]">Skills</a>
-          <a href="#experience" class="hover:text-[color:var(--brand)]"
-            >Experience</a
-          >
-          <a href="#awards" class="hover:text-[color:var(--brand)]">Awards</a>
-          <a href="#contact" class="hover:text-[color:var(--brand)]">Contact</a>
+        <nav id="primaryNavDesktop" class="hidden md:flex gap-6 text-sm font-semibold">
+          <a href="#about" data-nav-link class="hover:text-[color:var(--brand)]">Education</a>
+          <a href="#projects" data-nav-link class="hover:text-[color:var(--brand)]">Projects</a>
+          <a href="#skills" data-nav-link class="hover:text-[color:var(--brand)]">Skills</a>
+          <a href="#experience" data-nav-link class="hover:text-[color:var(--brand)]">Experience</a>
+          <a href="#awards" data-nav-link class="hover:text-[color:var(--brand)]">Awards</a>
+          <a href="#contact" data-nav-link class="hover:text-[color:var(--brand)]">Contact</a>
         </nav>
 
         <!-- Actions -->
@@ -117,8 +115,33 @@
               >Theme</span
             >
           </label>
+
+          <!-- Mobile menu button -->
+          <button id="navToggle"
+            class="md:hidden inline-flex items-center justify-center h-10 w-10 rounded-xl border border-slate-300 dark:border-white/20"
+            aria-controls="primaryNavMobile" aria-expanded="false" aria-label="Open menu">
+            <svg id="iconHamburger" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+            </svg>
+            <svg id="iconClose" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+            </svg>
+          </button>
         </div>
       </div>
+
+      <!-- Mobile Nav (collapsible) -->
+      <nav id="primaryNavMobile"
+           class="md:hidden hidden border-t border-slate-200/60 dark:border-white/10 bg-white dark:bg-black">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4 grid gap-3 text-sm font-semibold">
+          <a href="#about" data-nav-link class="block py-2">Education</a>
+          <a href="#projects" data-nav-link class="block py-2">Projects</a>
+          <a href="#skills" data-nav-link class="block py-2">Skills</a>
+          <a href="#experience" data-nav-link class="block py-2">Experience</a>
+          <a href="#awards" data-nav-link class="block py-2">Awards</a>
+          <a href="#contact" data-nav-link class="block py-2">Contact</a>
+        </div>
+      </nav>
     </header>
 
     <!-- Hero -->
