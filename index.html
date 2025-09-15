@@ -147,7 +147,7 @@
     <!-- Hero -->
     <section class="relative overflow-hidden scroll-mt-24">
       <div
-        class="max-w-7xl mx-auto px-4 sm:px-6 py-16 grid md:grid-cols-2 gap-10 items-center"
+        class="max-w-7xl mx-auto px-4 sm:px-6 py-10 grid md:grid-cols-2 gap-10 items-center"
       >
         <!-- Text column -->
         <div class="md:pr-8">
@@ -168,9 +168,8 @@
           >
             Recent BSc (Hons) Computer Science (Artificial Intelligence)
             graduate from Brunel University London with a classification of Upper Second Class Honours (2:1). 
-            Passionate about software engineering and AI, with hands-on experience across
-            academic projects (including an AI-driven music therapy app and a 2D
-            platformer). Strong foundation in programming, system design and
+            Passionate about software engineering and AI. With hands-on experience across
+            academic projects. Strong foundation in programming, system design and
             Agile project management.
           </p>
 
@@ -272,120 +271,127 @@
       </div>
     </section>
 
-    <!-- Projects -->
-    <section id="projects" class="scroll-mt-24">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 py-10">
-        <div class="flex items-end justify-between gap-4">
-          <div>
-            <h2 class="text-2xl font-extrabold">Projects</h2>
+<!-- Projects -->
+<section id="projects" class="scroll-mt-24">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 py-10">
+    <h2 class="text-3xl font-extrabold text-center">Projects</h2>
+    <p class="mt-2 text-center text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
+      A showcase of my academic and personal work — blending AI, software engineering, and game development.
+    </p>
+
+    <!-- Featured Projects -->
+    <div class="mt-10 space-y-10">
+      
+      <!-- Project 1: Harmonies in AI -->
+      <article class="card rounded-2xl border border-slate-200/60 dark:border-white/10 bg-transparent overflow-hidden">
+        <div class="md:grid md:grid-cols-2 gap-6 items-center">
+          <video class="w-full rounded-none" controls preload="metadata" src="./assets/HarmoniesInAI.mp4"></video>
+          <div class="p-6">
+            <h3 class="text-xl font-bold">🎵 Harmonies in AI</h3>
+            <p class="mt-2 text-sm text-slate-600 dark:text-slate-400 text-justify">
+              Final year dissertation at Brunel University London: An AI-powered music therapy app
+              that adapts playlists in real time using <strong>K-Means clustering</strong> on simulated biometric data
+              (heart rate, stress & anxiety).
+            </p>
+            <ul class="mt-3 text-sm list-disc list-inside text-slate-700 dark:text-slate-300 space-y-1">
+              <li>Adaptive playlists from simulated wearables</li>
+              <li>REST API backend + MySQL database</li>
+              <li>Cross-platform app with clean Flutter UI</li>
+            </ul>
+            <div class="mt-3 flex flex-wrap gap-2 text-xs">
+              <span class="px-2 py-1 rounded-full bg-slate-100 dark:bg-zinc-800">Flutter</span>
+              <span class="px-2 py-1 rounded-full bg-slate-100 dark:bg-zinc-800">Python</span>
+              <span class="px-2 py-1 rounded-full bg-slate-100 dark:bg-zinc-800">Node.js</span>
+              <span class="px-2 py-1 rounded-full bg-slate-100 dark:bg-zinc-800">Express</span>
+              <span class="px-2 py-1 rounded-full bg-slate-100 dark:bg-zinc-800">MySQL</span>
+              <span class="px-2 py-1 rounded-full bg-slate-100 dark:bg-zinc-800">K-Means</span>
+            </div>
+            <a href="https://linkedin.com/in/shanukasamarakone"
+               class="mt-4 inline-block rounded-xl px-4 py-2 border font-semibold border-slate-300 dark:border-white/20 hover:bg-slate-50 dark:hover:bg-zinc-900">
+              View Demo on LinkedIn ↗
+            </a>
           </div>
-          <span class="text-[color:var(--brand)] font-semibold opacity-70"
-            >See all →</span
-          >
         </div>
+      </article>
 
-        <div class="mt-6 grid md:grid-cols-3 gap-5">
-          <!-- Project 1 -->
-          <article
-            class="card rounded-2xl overflow-hidden border border-slate-200/60 dark:border-white/10 bg-transparent"
-          >
-            <img
-              src="https://placehold.co/1200x600?text=Adaptive+Harmonies+AI"
-              alt=""
-              class="w-full h-44 object-cover"
-            />
-            <div class="p-5">
-              <h3 class="font-bold text-lg">Adaptive Harmonies AI</h3>
-              <p
-                class="mt-2 text-sm text-slate-600 dark:text-slate-400 text-justify"
-              >
-                Cross-platform music-therapy app; clusters heart-rate/anxiety
-                scores with K-Means to adapt playlists.
-              </p>
-              <div class="mt-3 flex flex-wrap gap-2 text-xs">
-                <span class="px-2 py-1 rounded-full bg-slate-100 dark:bg-zinc-800"
-                  >Flutter</span
-                >
-                <span class="px-2 py-1 rounded-full bg-slate-100 dark:bg-zinc-800"
-                  >Node/Express</span
-                >
-                <span class="px-2 py-1 rounded-full bg-slate-100 dark:bg-zinc-800"
-                  >MySQL</span
-                >
-                <span class="px-2 py-1 rounded-full bg-slate-100 dark:bg-zinc-800"
-                  >Python</span
-                >
-              </div>
+      <!-- Project 2: Mini's World -->
+      <article class="card rounded-2xl border border-slate-200/60 dark:border-white/10 bg-transparent overflow-hidden">
+        <div class="md:grid md:grid-cols-2 gap-6 items-center">
+          <video class="w-full rounded-none" controls preload="metadata" src="./assets/GamePlay.mp4"></video>
+          <div class="p-6">
+            <h3 class="text-xl font-bold">🎮 Mini’s World — 2D Platformer</h3>
+            <p class="mt-2 text-sm text-slate-600 dark:text-slate-400 text-justify">
+              My first-ever game dev project: A 2D platformer with responsive controls, dynamic enemies, 
+              and engaging boss mechanics — built in <strong>Unity with C#</strong>.
+            </p>
+            <ul class="mt-3 text-sm list-disc list-inside text-slate-700 dark:text-slate-300 space-y-1">
+              <li>3 levels with enemies, coins, pickups, and checkpoints</li>
+              <li>Custom AI (Reaper chase, Ghost Wizard fireballs, boss pushback)</li>
+              <li>Physics-based movement with Rigidbody2D</li>
+            </ul>
+            <div class="mt-3 flex flex-wrap gap-2 text-xs">
+              <span class="px-2 py-1 rounded-full bg-slate-100 dark:bg-zinc-800">Unity</span>
+              <span class="px-2 py-1 rounded-full bg-slate-100 dark:bg-zinc-800">C#</span>
+              <span class="px-2 py-1 rounded-full bg-slate-100 dark:bg-zinc-800">2D Physics</span>
+              <span class="px-2 py-1 rounded-full bg-slate-100 dark:bg-zinc-800">Game AI</span>
             </div>
-          </article>
-
-          <!-- Project 2 -->
-          <article
-            class="card rounded-2xl overflow-hidden border border-slate-200/60 dark:border-white/10 bg-transparent"
-          >
-            <img
-              src="https://placehold.co/1200x600?text=Quality+Education+Web+App"
-              alt=""
-              class="w-full h-44 object-cover"
-            />
-            <div class="p-5">
-              <h3 class="font-bold text-lg">Quality Education Web App</h3>
-              <p
-                class="mt-2 text-sm text-slate-600 dark:text-slate-400 text-justify"
-              >
-                Platform supporting underprivileged youth with resources and CV
-                tools; React + Spring Boot + MySQL.
-              </p>
-              <div class="mt-3 flex flex-wrap gap-2 text-xs">
-                <span class="px-2 py-1 rounded-full bg-slate-100 dark:bg-zinc-800"
-                  >React</span
-                >
-                <span class="px-2 py-1 rounded-full bg-slate-100 dark:bg-zinc-800"
-                  >Spring Boot</span
-                >
-                <span class="px-2 py-1 rounded-full bg-slate-100 dark:bg-zinc-800"
-                  >MySQL</span
-                >
-                <span class="px-2 py-1 rounded-full bg-slate-100 dark:bg-zinc-800"
-                  >Agile</span
-                >
-              </div>
-            </div>
-          </article>
-
-          <!-- Project 3 -->
-          <article
-            class="card rounded-2xl overflow-hidden border border-slate-200/60 dark:border-white/10 bg-transparent"
-          >
-            <img
-              src="https://placehold.co/1200x600?text=Brunel+City+Airport+System"
-              alt=""
-              class="w-full h-44 object-cover"
-            />
-            <div class="p-5">
-              <h3 class="font-bold text-lg">Brunel City Airport System</h3>
-              <p
-                class="mt-2 text-sm text-slate-600 dark:text-slate-400 text-justify"
-              >
-                Seat-planning & management tooling with clear flows and ER
-                diagrams.
-              </p>
-              <div class="mt-3 flex flex-wrap gap-2 text-xs">
-                <span class="px-2 py-1 rounded-full bg-slate-100 dark:bg-zinc-800"
-                  >Java</span
-                >
-                <span class="px-2 py-1 rounded-full bg-slate-100 dark:bg-zinc-800"
-                  >Figma</span
-                >
-                <span class="px-2 py-1 rounded-full bg-slate-100 dark:bg-zinc-800"
-                  >Diagrams</span
-                >
-              </div>
-            </div>
-          </article>
+            <a href="https://linkedin.com/in/shanukasamarakone"
+               class="mt-4 inline-block rounded-xl px-4 py-2 border font-semibold border-slate-300 dark:border-white/20 hover:bg-slate-50 dark:hover:bg-zinc-900">
+              View Demo on LinkedIn ↗
+            </a>
+          </div>
         </div>
-      </div>
-    </section>
+      </article>
+    </div>
+
+    <!-- Supporting Projects -->
+    <div class="mt-12 grid md:grid-cols-2 gap-6">
+      
+      <!-- Project 3: Quality Education -->
+      <article class="card rounded-2xl border border-slate-200/60 dark:border-white/10 bg-transparent p-6">
+        <h3 class="text-lg font-bold">📚 Quality Education Web App</h3>
+        <p class="mt-2 text-sm text-slate-600 dark:text-slate-400 text-justify">
+          Platform to support underprivileged youth with learning resources and CV-building tools.
+          Built with React frontend and Spring Boot backend, delivered with Agile workflows.
+        </p>
+        <ul class="mt-3 text-sm list-disc list-inside text-slate-700 dark:text-slate-300 space-y-1">
+          <li>Resource library & CV builder</li>
+          <li>User authentication & role-based dashboards</li>
+          <li>Iterative UX improvements with feedback cycles</li>
+        </ul>
+        <div class="mt-3 flex flex-wrap gap-2 text-xs">
+          <span class="px-2 py-1 rounded-full bg-slate-100 dark:bg-zinc-800">Visual Studio</span>
+          <span class="px-2 py-1 rounded-full bg-slate-100 dark:bg-zinc-800">React</span>
+          <span class="px-2 py-1 rounded-full bg-slate-100 dark:bg-zinc-800">React Native</span>
+          <span class="px-2 py-1 rounded-full bg-slate-100 dark:bg-zinc-800">Spring Boot</span>
+          <span class="px-2 py-1 rounded-full bg-slate-100 dark:bg-zinc-800">MySQL</span>
+        </div>
+      </article>
+
+      <!-- Project 4: Airport System -->
+      <article class="card rounded-2xl border border-slate-200/60 dark:border-white/10 bg-transparent p-6">
+        <h3 class="text-lg font-bold">✈️ Brunel City Airport System</h3>
+        <p class="mt-2 text-sm text-slate-600 dark:text-slate-400 text-justify">
+          Designed the flight management and seat-planning module with data models, user flows, and UI prototypes.
+          Focused on system interactions and usability.
+        </p>
+        <ul class="mt-3 text-sm list-disc list-inside text-slate-700 dark:text-slate-300 space-y-1">
+          <li>ER & flow diagrams with app.io.net</li>
+          <li>Seat allocation and booking logic</li>
+          <li>Wireframes and UI prototyping in Figma</li>
+        </ul>
+        <div class="mt-3 flex flex-wrap gap-2 text-xs">
+          <span class="px-2 py-1 rounded-full bg-slate-100 dark:bg-zinc-800">Java</span>
+          <span class="px-2 py-1 rounded-full bg-slate-100 dark:bg-zinc-800">JavaScript</span>
+          <span class="px-2 py-1 rounded-full bg-slate-100 dark:bg-zinc-800">Figma</span>
+          <span class="px-2 py-1 rounded-full bg-slate-100 dark:bg-zinc-800">ER Diagrams</span>
+          <span class="px-2 py-1 rounded-full bg-slate-100 dark:bg-zinc-800">app.io.net</span>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
 
     <!-- Skills -->
     <section id="skills" class="scroll-mt-24">
