@@ -21,9 +21,11 @@
       })();
     </script>
 
-    <!-- 1) Tailwind: use class-based dark mode -->
+    <!-- 1) Tailwind: use class-based dark mode (must be set BEFORE CDN script) -->
     <script>
-      window.tailwind = { config: { darkMode: "class" } };
+      // Either assignment works; keeping it simple:
+      tailwind = { config: { darkMode: "class" } };
+      // (equivalently: tailwind.config = { darkMode: "class" });
     </script>
     <script src="https://cdn.tailwindcss.com"></script>
 
@@ -34,7 +36,7 @@
       rel="stylesheet"
     />
 
-    <!-- Optional external CSS & JS (your split files) -->
+    <!-- External CSS & JS -->
     <link rel="stylesheet" href="./css/styles.css" />
 
     <style>
@@ -63,8 +65,8 @@
     <script src="./js/main.js" defer></script>
   </head>
 
-  <!-- Body drives the whole-page theme -->
-  <body class="bg-white text-slate-900 dark:bg-black dark:text-white">
+  <!-- Only this body class controls page-wide background & text color -->
+  <body class="bg-[color:var(--page-bg)] text-[color:var(--page-fg)]">
     <!-- Header -->
     <header
       class="sticky top-0 z-50 backdrop-blur bg-white/75 dark:bg-black/60 border-b border-slate-200/60 dark:border-white/10"
@@ -77,7 +79,7 @@
           <span class="text-[color:var(--brand)]">Shanuka</span> Samarakone
         </a>
 
-        <!-- Nav (links already target section IDs; smooth via html.scroll-smooth) -->
+        <!-- Nav -->
         <nav id="primaryNavDesktop" class="hidden md:flex gap-6 text-sm font-semibold">
           <a href="#about" data-nav-link class="hover:text-[color:var(--brand)]">Education</a>
           <a href="#projects" data-nav-link class="hover:text-[color:var(--brand)]">Projects</a>
@@ -111,9 +113,7 @@
             <div
               class="relative w-14 h-8 rounded-full bg-slate-300 dark:bg-white/20 transition-colors peer-checked:bg-[color:var(--brand)] after:content-[''] after:absolute after:top-1 after:left-1 after:h-6 after:w-6 after:rounded-full after:bg-white after:transition-transform peer-checked:after:translate-x-6"
             ></div>
-            <span class="ml-2 text-sm text-slate-600 dark:text-slate-300"
-              >Theme</span
-            >
+            <span class="ml-2 text-sm text-slate-600 dark:text-slate-300">Theme</span>
           </label>
 
           <!-- Mobile menu button -->
@@ -158,14 +158,11 @@
           </span>
           <h1 class="mt-3 text-4xl sm:text-5xl font-extrabold leading-tight">
             Hi, I’m
-            <span class="text-[color:var(--brand)]">Shanuka Samarakone</span
-            ><br />
+            <span class="text-[color:var(--brand)]">Shanuka Samarakone</span><br />
             Aspiring Software Engineer & AI Graduate
           </h1>
 
-          <p
-            class="mt-4 text-slate-600 dark:text-slate-300 max-w-prose text-justify leading-relaxed"
-          >
+          <p class="mt-4 text-slate-600 dark:text-slate-300 max-w-prose text-justify leading-relaxed">
             Recent BSc (Hons) Computer Science (Artificial Intelligence)
             graduate from Brunel University London with a classification of Upper Second Class Honours (2:1). 
             Passionate about software engineering and AI. With hands-on experience across
@@ -187,17 +184,9 @@
           </div>
 
           <div class="mt-6 flex items-center gap-4 text-sm">
-            <a href="mailto:shanuka.samarakone@gmail.com" class="underline"
-              >Email</a
-            >
-            <a
-              href="https://linkedin.com/in/shanukasamarakone"
-              class="underline"
-              >LinkedIn</a
-            >
-            <a href="https://github.com/Shanuka-Samarakone" class="underline"
-              >GitHub</a
-            >
+            <a href="mailto:shanuka.samarakone@gmail.com" class="underline">Email</a>
+            <a href="https://linkedin.com/in/shanukasamarakone" class="underline">LinkedIn</a>
+            <a href="https://github.com/Shanuka-Samarakone" class="underline">GitHub</a>
           </div>
         </div>
 
@@ -225,9 +214,7 @@
 
         <div class="mt-6 space-y-5">
           <!-- Degree -->
-          <div
-            class="rounded-2xl border border-slate-200/60 dark:border-white/10 p-5 bg-transparent"
-          >
+          <div class="rounded-2xl border border-slate-200/60 dark:border-white/10 p-5 bg-transparent">
             <div class="font-semibold">
               BSc (Hons) Computer Science (Artificial Intelligence) — Brunel
               University London
@@ -238,27 +225,21 @@
           </div>
 
           <!-- A-Levels -->
-          <div
-            class="rounded-2xl border border-slate-200/60 dark:border-white/10 p-5 bg-transparent"
-          >
+          <div class="rounded-2xl border border-slate-200/60 dark:border-white/10 p-5 bg-transparent">
             <div class="font-semibold">
               GCE Advanced Level — Trinity College Kandy, Sri Lanka
             </div>
             <div class="text-sm text-slate-500 dark:text-slate-400">
               2019–2022
             </div>
-            <p
-              class="mt-2 text-sm text-justify text-slate-700 dark:text-slate-300"
-            >
+            <p class="mt-2 text-sm text-justify text-slate-700 dark:text-slate-300">
               English Language (A), English Literature (C), ICT (C), Economics
               (C)
             </p>
           </div>
 
           <!-- Certificate -->
-          <div
-            class="rounded-2xl border border-slate-200/60 dark:border-white/10 p-5 bg-transparent"
-          >
+          <div class="rounded-2xl border border-slate-200/60 dark:border-white/10 p-5 bg-transparent">
             <div class="font-semibold">
               Certificate of Higher Education in Computer Science — NIBM, Sri
               Lanka
@@ -271,127 +252,122 @@
       </div>
     </section>
 
-<!-- Projects -->
-<section id="projects" class="scroll-mt-24">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 py-10">
-    <h2 class="text-3xl font-extrabold text-center">Projects</h2>
-    <p class="mt-2 text-center text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
-      A showcase of my academic and personal work — blending AI, software engineering, and game development.
-    </p>
+    <!-- Projects -->
+    <section id="projects" class="scroll-mt-24">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 py-10">
+        <h2 class="text-3xl font-extrabold text-center">Projects</h2>
+        <p class="mt-2 text-center text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
+          A Showcase of My Academic and Personal Work — Blending AI, Software Engineering and Game Development.
+        </p>
 
-    <!-- Featured Projects -->
-    <div class="mt-10 space-y-10">
-      
-      <!-- Project 1: Harmonies in AI -->
-      <article class="card rounded-2xl border border-slate-200/60 dark:border-white/10 bg-transparent overflow-hidden">
-        <div class="md:grid md:grid-cols-2 gap-6 items-center">
-          <video class="w-full rounded-none" controls preload="metadata" src="./assets/HarmoniesInAI.mp4"></video>
-          <div class="p-6">
-            <h3 class="text-xl font-bold">🎵 Harmonies in AI</h3>
+        <!-- Featured Projects -->
+        <div class="mt-10 space-y-10">
+          <!-- Project 1 -->
+          <article class="card rounded-2xl border border-slate-200/60 dark:border-white/10 bg-transparent overflow-hidden">
+            <div class="md:grid md:grid-cols-2 gap-6 items-center">
+              <video class="w-full rounded-none" controls preload="metadata" src="./assets/HarmoniesInAI.mp4"></video>
+              <div class="p-6">
+                <h3 class="text-xl font-bold">🎵 Harmonies in AI</h3>
+                <p class="mt-2 text-sm text-slate-600 dark:text-slate-400 text-justify">
+                  Final year dissertation at Brunel University London: An AI-powered music therapy app
+                  that adapts playlists in real time using <strong>K-Means clustering</strong> on simulated biometric data
+                  (heart rate, stress & anxiety).
+                </p>
+                <ul class="mt-3 text-sm list-disc list-inside text-slate-700 dark:text-slate-300 space-y-1">
+                  <li>Adaptive playlists from simulated wearables</li>
+                  <li>REST API backend + MySQL database</li>
+                  <li>Cross-platform app with clean Flutter UI</li>
+                </ul>
+                <div class="mt-3 flex flex-wrap gap-2 text-xs">
+                  <span class="px-2 py-1 rounded-full bg-slate-100 dark:bg-zinc-800">Flutter</span>
+                  <span class="px-2 py-1 rounded-full bg-slate-100 dark:bg-zinc-800">Python</span>
+                  <span class="px-2 py-1 rounded-full bg-slate-100 dark:bg-zinc-800">Node.js</span>
+                  <span class="px-2 py-1 rounded-full bg-slate-100 dark:bg-zinc-800">Express</span>
+                  <span class="px-2 py-1 rounded-full bg-slate-100 dark:bg-zinc-800">MySQL</span>
+                  <span class="px-2 py-1 rounded-full bg-slate-100 dark:bg-zinc-800">K-Means</span>
+                </div>
+                <a href="https://linkedin.com/in/shanukasamarakone"
+                   class="mt-4 inline-block rounded-xl px-4 py-2 border font-semibold border-slate-300 dark:border-white/20 hover:bg-slate-50 dark:hover:bg-zinc-900">
+                  View Demo on LinkedIn ↗
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 2 -->
+          <article class="card rounded-2xl border border-slate-200/60 dark:border-white/10 bg-transparent overflow-hidden">
+            <div class="md:grid md:grid-cols-2 gap-6 items-center">
+              <video class="w-full rounded-none" controls preload="metadata" src="./assets/GamePlay.mp4"></video>
+              <div class="p-6">
+                <h3 class="text-xl font-bold">🎮 Mini’s World — 2D Platformer</h3>
+                <p class="mt-2 text-sm text-slate-600 dark:text-slate-400 text-justify">
+                  My first-ever game dev project: A 2D platformer with responsive controls, dynamic enemies, 
+                  and engaging boss mechanics — built in <strong>Unity with C#</strong>.
+                </p>
+                <ul class="mt-3 text-sm list-disc list-inside text-slate-700 dark:text-slate-300 space-y-1">
+                  <li>3 levels with enemies, coins, pickups, and checkpoints</li>
+                  <li>Custom AI (Reaper chase, Ghost Wizard fireballs, boss pushback)</li>
+                  <li>Physics-based movement with Rigidbody2D</li>
+                </ul>
+                <div class="mt-3 flex flex-wrap gap-2 text-xs">
+                  <span class="px-2 py-1 rounded-full bg-slate-100 dark:bg-zinc-800">Unity</span>
+                  <span class="px-2 py-1 rounded-full bg-slate-100 dark:bg-zinc-800">C#</span>
+                  <span class="px-2 py-1 rounded-full bg-slate-100 dark:bg-zinc-800">2D Physics</span>
+                  <span class="px-2 py-1 rounded-full bg-slate-100 dark:bg-zinc-800">Game AI</span>
+                </div>
+                <a href="https://linkedin.com/in/shanukasamarakone"
+                   class="mt-4 inline-block rounded-xl px-4 py-2 border font-semibold border-slate-300 dark:border-white/20 hover:bg-slate-50 dark:hover:bg-zinc-900">
+                  View Demo on LinkedIn ↗
+                </a>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <!-- Supporting Projects -->
+        <div class="mt-12 grid md:grid-cols-2 gap-6">
+          <article class="card rounded-2xl border border-slate-200/60 dark:border-white/10 bg-transparent p-6">
+            <h3 class="text-lg font-bold">📚 Quality Education Web App</h3>
             <p class="mt-2 text-sm text-slate-600 dark:text-slate-400 text-justify">
-              Final year dissertation at Brunel University London: An AI-powered music therapy app
-              that adapts playlists in real time using <strong>K-Means clustering</strong> on simulated biometric data
-              (heart rate, stress & anxiety).
+              Platform to support underprivileged youth with learning resources and CV-building tools.
+              Built with React frontend and Spring Boot backend, delivered with Agile workflows.
             </p>
             <ul class="mt-3 text-sm list-disc list-inside text-slate-700 dark:text-slate-300 space-y-1">
-              <li>Adaptive playlists from simulated wearables</li>
-              <li>REST API backend + MySQL database</li>
-              <li>Cross-platform app with clean Flutter UI</li>
+              <li>Resource library & CV builder</li>
+              <li>User authentication & role-based dashboards</li>
+              <li>Iterative UX improvements with feedback cycles</li>
             </ul>
             <div class="mt-3 flex flex-wrap gap-2 text-xs">
-              <span class="px-2 py-1 rounded-full bg-slate-100 dark:bg-zinc-800">Flutter</span>
-              <span class="px-2 py-1 rounded-full bg-slate-100 dark:bg-zinc-800">Python</span>
-              <span class="px-2 py-1 rounded-full bg-slate-100 dark:bg-zinc-800">Node.js</span>
-              <span class="px-2 py-1 rounded-full bg-slate-100 dark:bg-zinc-800">Express</span>
+              <span class="px-2 py-1 rounded-full bg-slate-100 dark:bg-zinc-800">Visual Studio</span>
+              <span class="px-2 py-1 rounded-full bg-slate-100 dark:bg-zinc-800">React</span>
+              <span class="px-2 py-1 rounded-full bg-slate-100 dark:bg-zinc-800">React Native</span>
+              <span class="px-2 py-1 rounded-full bg-slate-100 dark:bg-zinc-800">Spring Boot</span>
               <span class="px-2 py-1 rounded-full bg-slate-100 dark:bg-zinc-800">MySQL</span>
-              <span class="px-2 py-1 rounded-full bg-slate-100 dark:bg-zinc-800">K-Means</span>
             </div>
-            <a href="https://linkedin.com/in/shanukasamarakone"
-               class="mt-4 inline-block rounded-xl px-4 py-2 border font-semibold border-slate-300 dark:border-white/20 hover:bg-slate-50 dark:hover:bg-zinc-900">
-              View Demo on LinkedIn ↗
-            </a>
-          </div>
-        </div>
-      </article>
+          </article>
 
-      <!-- Project 2: Mini's World -->
-      <article class="card rounded-2xl border border-slate-200/60 dark:border-white/10 bg-transparent overflow-hidden">
-        <div class="md:grid md:grid-cols-2 gap-6 items-center">
-          <video class="w-full rounded-none" controls preload="metadata" src="./assets/GamePlay.mp4"></video>
-          <div class="p-6">
-            <h3 class="text-xl font-bold">🎮 Mini’s World — 2D Platformer</h3>
+          <article class="card rounded-2xl border border-slate-200/60 dark:border-white/10 bg-transparent p-6">
+            <h3 class="text-lg font-bold">✈️ Brunel City Airport System</h3>
             <p class="mt-2 text-sm text-slate-600 dark:text-slate-400 text-justify">
-              My first-ever game dev project: A 2D platformer with responsive controls, dynamic enemies, 
-              and engaging boss mechanics — built in <strong>Unity with C#</strong>.
+              Designed the flight management and seat-planning module with data models, user flows, and UI prototypes.
+              Focused on system interactions and usability.
             </p>
             <ul class="mt-3 text-sm list-disc list-inside text-slate-700 dark:text-slate-300 space-y-1">
-              <li>3 levels with enemies, coins, pickups, and checkpoints</li>
-              <li>Custom AI (Reaper chase, Ghost Wizard fireballs, boss pushback)</li>
-              <li>Physics-based movement with Rigidbody2D</li>
+              <li>ER & flow diagrams with app.io.net</li>
+              <li>Seat allocation and booking logic</li>
+              <li>Wireframes and UI prototyping in Figma</li>
             </ul>
             <div class="mt-3 flex flex-wrap gap-2 text-xs">
-              <span class="px-2 py-1 rounded-full bg-slate-100 dark:bg-zinc-800">Unity</span>
-              <span class="px-2 py-1 rounded-full bg-slate-100 dark:bg-zinc-800">C#</span>
-              <span class="px-2 py-1 rounded-full bg-slate-100 dark:bg-zinc-800">2D Physics</span>
-              <span class="px-2 py-1 rounded-full bg-slate-100 dark:bg-zinc-800">Game AI</span>
+              <span class="px-2 py-1 rounded-full bg-slate-100 dark:bg-zinc-800">Java</span>
+              <span class="px-2 py-1 rounded-full bg-slate-100 dark:bg-zinc-800">JavaScript</span>
+              <span class="px-2 py-1 rounded-full bg-slate-100 dark:bg-zinc-800">Figma</span>
+              <span class="px-2 py-1 rounded-full bg-slate-100 dark:bg-zinc-800">ER Diagrams</span>
+              <span class="px-2 py-1 rounded-full bg-slate-100 dark:bg-zinc-800">app.io.net</span>
             </div>
-            <a href="https://linkedin.com/in/shanukasamarakone"
-               class="mt-4 inline-block rounded-xl px-4 py-2 border font-semibold border-slate-300 dark:border-white/20 hover:bg-slate-50 dark:hover:bg-zinc-900">
-              View Demo on LinkedIn ↗
-            </a>
-          </div>
+          </article>
         </div>
-      </article>
-    </div>
-
-    <!-- Supporting Projects -->
-    <div class="mt-12 grid md:grid-cols-2 gap-6">
-      
-      <!-- Project 3: Quality Education -->
-      <article class="card rounded-2xl border border-slate-200/60 dark:border-white/10 bg-transparent p-6">
-        <h3 class="text-lg font-bold">📚 Quality Education Web App</h3>
-        <p class="mt-2 text-sm text-slate-600 dark:text-slate-400 text-justify">
-          Platform to support underprivileged youth with learning resources and CV-building tools.
-          Built with React frontend and Spring Boot backend, delivered with Agile workflows.
-        </p>
-        <ul class="mt-3 text-sm list-disc list-inside text-slate-700 dark:text-slate-300 space-y-1">
-          <li>Resource library & CV builder</li>
-          <li>User authentication & role-based dashboards</li>
-          <li>Iterative UX improvements with feedback cycles</li>
-        </ul>
-        <div class="mt-3 flex flex-wrap gap-2 text-xs">
-          <span class="px-2 py-1 rounded-full bg-slate-100 dark:bg-zinc-800">Visual Studio</span>
-          <span class="px-2 py-1 rounded-full bg-slate-100 dark:bg-zinc-800">React</span>
-          <span class="px-2 py-1 rounded-full bg-slate-100 dark:bg-zinc-800">React Native</span>
-          <span class="px-2 py-1 rounded-full bg-slate-100 dark:bg-zinc-800">Spring Boot</span>
-          <span class="px-2 py-1 rounded-full bg-slate-100 dark:bg-zinc-800">MySQL</span>
-        </div>
-      </article>
-
-      <!-- Project 4: Airport System -->
-      <article class="card rounded-2xl border border-slate-200/60 dark:border-white/10 bg-transparent p-6">
-        <h3 class="text-lg font-bold">✈️ Brunel City Airport System</h3>
-        <p class="mt-2 text-sm text-slate-600 dark:text-slate-400 text-justify">
-          Designed the flight management and seat-planning module with data models, user flows, and UI prototypes.
-          Focused on system interactions and usability.
-        </p>
-        <ul class="mt-3 text-sm list-disc list-inside text-slate-700 dark:text-slate-300 space-y-1">
-          <li>ER & flow diagrams with app.io.net</li>
-          <li>Seat allocation and booking logic</li>
-          <li>Wireframes and UI prototyping in Figma</li>
-        </ul>
-        <div class="mt-3 flex flex-wrap gap-2 text-xs">
-          <span class="px-2 py-1 rounded-full bg-slate-100 dark:bg-zinc-800">Java</span>
-          <span class="px-2 py-1 rounded-full bg-slate-100 dark:bg-zinc-800">JavaScript</span>
-          <span class="px-2 py-1 rounded-full bg-slate-100 dark:bg-zinc-800">Figma</span>
-          <span class="px-2 py-1 rounded-full bg-slate-100 dark:bg-zinc-800">ER Diagrams</span>
-          <span class="px-2 py-1 rounded-full bg-slate-100 dark:bg-zinc-800">app.io.net</span>
-        </div>
-      </article>
-
-    </div>
-  </div>
-</section>
+      </div>
+    </section>
 
     <!-- Skills -->
     <section id="skills" class="scroll-mt-24">
@@ -399,7 +375,6 @@
         <h2 class="text-2xl font-extrabold">Skills</h2>
 
         <div class="mt-8 grid lg:grid-cols-2 gap-6">
-          <!-- Programming Languages -->
           <div class="card rounded-2xl border p-6 border-slate-200/60 dark:border-white/10 bg-transparent">
             <h3 class="font-bold">Programming Languages</h3>
             <div class="mt-3 flex flex-wrap gap-2 text-sm text-slate-700 dark:text-slate-300">
@@ -413,7 +388,6 @@
             </div>
           </div>
 
-          <!-- Frameworks & Libraries -->
           <div class="card rounded-2xl border p-6 border-slate-200/60 dark:border-white/10 bg-transparent">
             <h3 class="font-bold">Frameworks & Libraries</h3>
             <div class="mt-3 flex flex-wrap gap-2 text-sm text-slate-700 dark:text-slate-300">
@@ -425,7 +399,6 @@
             </div>
           </div>
 
-          <!-- Databases -->
           <div class="card rounded-2xl border p-6 border-slate-200/60 dark:border-white/10 bg-transparent">
             <h3 class="font-bold">Databases</h3>
             <div class="mt-3 flex flex-wrap gap-2 text-sm text-slate-700 dark:text-slate-300">
@@ -433,7 +406,6 @@
             </div>
           </div>
 
-          <!-- Tools -->
           <div class="card rounded-2xl border p-6 border-slate-200/60 dark:border-white/10 bg-transparent">
             <h3 class="font-bold">Tools</h3>
             <div class="mt-3 flex flex-wrap gap-2 text-sm text-slate-700 dark:text-slate-300">
@@ -446,10 +418,7 @@
             </div>
           </div>
 
-          <!-- Soft Skills -->
-          <div
-            class="card rounded-2xl border p-6 border-slate-200/60 dark:border-white/10 bg-transparent lg:col-span-2"
-          >
+          <div class="card rounded-2xl border p-6 border-slate-200/60 dark:border-white/10 bg-transparent lg:col-span-2">
             <h3 class="font-bold">Soft Skills</h3>
             <div class="mt-3 flex flex-wrap gap-2 text-sm text-slate-700 dark:text-slate-300">
               <span class="px-3 py-1 rounded-full bg-slate-100 dark:bg-zinc-800">Teamwork & Leadership</span>
@@ -474,23 +443,13 @@
         <div class="mt-6 space-y-8">
           <!-- Retail Customer Service Manager -->
           <div class="relative pl-6">
-            <div
-              class="absolute left-0 top-2 w-3 h-3 rounded-full bg-[color:var(--brand)]"
-            ></div>
-            <h3 class="font-bold">
-              Retail Customer Service Manager · Ladbrokes / Corals
-            </h3>
-            <p class="text-sm text-slate-500 dark:text-slate-400">
-              Apr 2023 – Present · Uxbridge, UK
-            </p>
-
-            <!-- Brief description -->
+            <div class="absolute left-0 top-2 w-3 h-3 rounded-full bg-[color:var(--brand)]"></div>
+            <h3 class="font-bold">Retail Customer Service Manager · Ladbrokes / Corals</h3>
+            <p class="text-sm text-slate-500 dark:text-slate-400">Apr 2023 – Present · Uxbridge, UK</p>
             <p class="mt-2 text-sm text-slate-700 dark:text-slate-300 text-justify">
               Responsible for day-to-day operations, customer support, cash
               handling and product promotion in a fast-paced environment.
             </p>
-
-            <!-- Key Skills -->
             <div class="mt-3 flex flex-wrap gap-2 text-xs">
               <span class="px-2 py-1 rounded-full border border-slate-300 dark:border-white/20">Customer Service</span>
               <span class="px-2 py-1 rounded-full border border-slate-300 dark:border-white/20">Teamwork</span>
@@ -502,17 +461,9 @@
 
           <!-- CSR & Sustainable Business Assistant -->
           <div class="relative pl-6">
-            <div
-              class="absolute left-0 top-2 w-3 h-3 rounded-full bg-[color:var(--brand)]"
-            ></div>
-            <h3 class="font-bold">
-              CSR & Sustainable Business Assistant · Hatton National Bank PLC
-            </h3>
-            <p class="text-sm text-slate-500 dark:text-slate-400">
-              Jul 2022 – Dec 2022 · Colombo, Sri Lanka
-            </p>
-
-            <!-- Brief description -->
+            <div class="absolute left-0 top-2 w-3 h-3 rounded-full bg-[color:var(--brand)]"></div>
+            <h3 class="font-bold">CSR & Sustainable Business Assistant · Hatton National Bank PLC</h3>
+            <p class="text-sm text-slate-500 dark:text-slate-400">Jul 2022 – Dec 2022 · Colombo, Sri Lanka</p>
             <p class="mt-2 text-sm text-slate-700 dark:text-slate-300 text-justify">
               Led sustainable business initiatives, including the 2022 GHG
               emissions assessment and management of the Smart Carbon Calculator
@@ -521,8 +472,6 @@
               Supported trustees with award applications and contributed to
               community projects under the “Oba Wenuwen Api” initiative.
             </p>
-
-            <!-- Key Skills -->
             <div class="mt-3 flex flex-wrap gap-2 text-xs">
               <span class="px-2 py-1 rounded-full border border-slate-300 dark:border-white/20">Sustainability</span>
               <span class="px-2 py-1 rounded-full border border-slate-300 dark:border-white/20">Data Analysis</span>
@@ -540,26 +489,16 @@
       <div class="max-w-7xl mx-auto px-4 sm:px-6 py-10">
         <h2 class="text-2xl font-extrabold">Awards</h2>
         <ul class="mt-5 grid sm:grid-cols-2 gap-3 text-sm">
-          <li
-            class="card rounded-2xl border p-5 border-slate-200/60 dark:border-white/10 bg-transparent"
-          >
+          <li class="card rounded-2xl border p-5 border-slate-200/60 dark:border-white/10 bg-transparent">
             Collective Student Ambassador Award | Brunel Pathway College London
           </li>
-
-          <li
-            class="card rounded-2xl border p-5 border-slate-200/60 dark:border-white/10 bg-transparent"
-          >
-            Student Engagment and Participation Award | Brunel Pathway College
-            London
+          <li class="card rounded-2xl border p-5 border-slate-200/60 dark:border-white/10 bg-transparent">
+            Student Engagment and Participation Award | Brunel Pathway College London
           </li>
-          <li
-            class="card rounded-2xl border p-5 border-slate-200/60 dark:border-white/10 bg-transparent"
-          >
+          <li class="card rounded-2xl border p-5 border-slate-200/60 dark:border-white/10 bg-transparent">
             Independent Learner Award | Brunel Pathway College London
           </li>
-          <li
-            class="card rounded-2xl border p-5 border-slate-200/60 dark:border-white/10 bg-transparent"
-          >
+          <li class="card rounded-2xl border p-5 border-slate-200/60 dark:border-white/10 bg-transparent">
             Chorister of the Year Award | Trinity College Kandy
           </li>
         </ul>
@@ -569,24 +508,14 @@
     <!-- Contact -->
     <section id="contact" class="scroll-mt-24">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 py-10">
-        <div
-          class="rounded-3xl p-8 md:p-12 border border-slate-200/60 dark:border-white/10 bg-transparent"
-        >
+        <div class="rounded-3xl p-8 md:p-12 border border-slate-200/60 dark:border-white/10 bg-transparent">
           <h2 class="text-2xl font-extrabold">Let’s have a Chat!</h2>
-          <p class="mt-2 text-slate-600 dark:text-slate-300">
-            Email me or reach out on LinkedIn.
-          </p>
+          <p class="mt-2 text-slate-600 dark:text-slate-300">Email me or reach out on LinkedIn.</p>
           <div class="mt-6 flex flex-wrap gap-4">
-            <a
-              href="mailto:shanuka.samarakone@gmail.com"
-              class="rounded-xl px-5 py-3 bg-[color:var(--brand)] text-white font-semibold"
-              >Email Me</a
-            >
-            <a
-              href="https://linkedin.com/in/shanukasamarakone"
-              class="rounded-xl px-5 py-3 border font-semibold border-slate-300 dark:border-white/20"
-              >LinkedIn</a
-            >
+            <a href="mailto:shanuka.samarakone@gmail.com"
+               class="rounded-xl px-5 py-3 bg-[color:var(--brand)] text-white font-semibold">Email Me</a>
+            <a href="https://linkedin.com/in/shanukasamarakone"
+               class="rounded-xl px-5 py-3 border font-semibold border-slate-300 dark:border-white/20">LinkedIn</a>
           </div>
         </div>
         <p class="mt-5 text-xs text-slate-500 dark:text-slate-400">

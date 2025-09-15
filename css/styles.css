@@ -1,25 +1,156 @@
-/* Theme variables (used with [color:var(--brand)] in your HTML) */
+/* ================================
+   THEME VARIABLES (single source)
+   ================================ */
 :root {
-  --brand: #6c5ce7;   /* light: purple */
-  --accent: #ffb020;  /* light: amber */
+  /* Page-wide background & text (LIGHT) */
+  --page-bg: #ffffff;
+  --page-fg: #0f172a; /* slate-900-ish */
+
+  /* Brand accents */
+  --brand: #6c5ce7;   /* purple */
+  --accent: #ffb020;  /* amber */
+
+  /* NEW: Light-mode readability tuning */
+  --muted: #334155;       /* slate-700 for body/labels when needed */
+  --muted-2: #475569;     /* slate-600 for secondary text */
+  --border: #cbd5e1;      /* slate-300 for visible borders */
+  --nav-bg: rgba(255,255,255,0.9);
+
+  /* Make built-in UI (controls/scrollbars) follow our theme */
+  color-scheme: light;
 }
 
 html.dark {
-  --brand: #ef4444;   /* dark: red */
-  --accent: #ffffff;  /* dark: white */
+  /* Page-wide background & text (DARK) */
+  --page-bg: #000000;
+  --page-fg: #ffffff;
+
+  /* keep your dark accents exactly as before */
+  --brand: #ef4444;   /* red */
+  --accent: #ffffff;  /* white */
+
+  /* dark mode keeps existing look — no changes */
+  color-scheme: dark;
 }
 
-/* Base typography (Tailwind handles most styles; this just sets the stack) */
+/* ================================
+   BASE TYPOGRAPHY
+   ================================ */
 body {
   font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
 }
 
-/* Reusable card hover effect */
+/* Card hover (unchanged) */
 .card {
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
-
 .card:hover {
   transform: translateY(-3px);
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+}
+
+/* ================================
+   LIGHT THEME VISIBILITY BOOSTS
+   (keeps dark theme untouched)
+   ================================ */
+
+/* 1) Body text already uses text-[color:var(--page-fg)] via HTML.
+      Make "muted" Tailwind text utilities a bit darker in LIGHT. */
+html:not(.dark) .text-slate-500,
+html:not(.dark) .text-slate-500\/\[0\.85\] {
+  color: var(--muted-2) !important; /* slate-600 */
+}
+html:not(.dark) .text-slate-600 {
+  color: var(--muted-2) !important; /* slate-600 */
+}
+html:not(.dark) .text-slate-700 {
+  color: var(--muted) !important;    /* slate-700 */
+}
+
+/* 2) Borders: strengthen the common light borders so they’re visible on white */
+html:not(.dark) .border { border-color: var(--border) !important; }
+
+/* Tailwind’s specific light border utilities you used */
+html:not(.dark) .border-slate-200,
+html:not(.dark) .border-slate-200\/60 {
+  border-color: rgba(203, 213, 225, 0.95) !important; /* ~slate-300, higher opacity */
+}
+html:not(.dark) .border-slate-300 {
+  border-color: #cbd5e1 !important; /* slate-300 */
+}
+
+/* 3) Header: keep slight translucency but ensure it reads on white */
+html:not(.dark) header[class*="bg-white"] {
+  background-color: var(--nav-bg) !important; /* a touch more opaque */
+}
+
+/* 4) Video/image placeholders — make sure the gray shows on white too */
+html:not(.dark) img.bg-slate-200,
+html:not(.dark) .bg-slate-200 {
+  background-color: #e5e7eb !important; /* slate-200 */
+}
+
+/* === Toggle visuals ===================================== */
+
+/* Track should always be brand color:
+   - light theme: purple (from :root --brand)
+   - dark theme: red (from html.dark --brand) */
+#themeToggle + div {
+  background-color: var(--brand) !important;
+}
+
+/* Keep the knob (the little circle) white in both themes */
+#themeToggle + div::after {
+  background-color: #ffffff !important;
+}
+
+/* Keep a subtle outline in light so the white knob has contrast */
+html:not(.dark) #themeToggle + div {
+  box-shadow: inset 0 0 0 1px #cbd5e1; /* slate-300 */
+}
+
+/* Slightly stronger outline when checked (optional) */
+html:not(.dark) #themeToggle:checked + div {
+  box-shadow: inset 0 0 0 1px #94a3b8; /* slate-400 */
+}
+
+/* Keep SKILLS chips identical in light & dark */
+#skills span.rounded-full {
+  background-color: #27272a !important; /* zinc-800-ish (ash) */
+  color: #ffffff !important;            /* white text */
+  border: none !important;              /* ignore any light-mode borders */
+}
+
+/* If any chip uses only a border (no bg), give it the same ash fill */
+#skills span.rounded-full.border {
+  background-color: #27272a !important;
+}
+
+/* Keep PROJECTS tool chips identical in light & dark */
+#projects span.rounded-full {
+  background-color: #27272a !important; /* ash */
+  color: #ffffff !important;            /* white text */
+  border: none !important;              /* ignore any light-mode borders */
+}
+
+/* If any chip uses only a border (no bg), give it the same ash fill */
+#projects span.rounded-full.border {
+  background-color: #27272a !important;
+}
+
+#themeToggle + div::after {
+  position: absolute !important;
+  top: 47% !important;                       /* your tweak */
+  left: 0.25rem !important;                  /* 4px left padding */
+  height: 1.6rem !important;                 /* your size */
+  width: 1.6rem !important;                  /* your size */
+  border-radius: 9999px !important;
+  transform: translateY(-50%) !important;    /* keep perfectly centered */
+  background-color: #ffffff !important;      /* white knob */
+}
+
+#themeToggle:checked + div::after {
+  /* Slide to the right, keeping the same 4px padding and 1.6rem knob width */
+  left: calc(100% - 0.25rem - 1.6rem) !important;
+  transform: translateY(-50%) !important;    /* stay centered when checked */
 }

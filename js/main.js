@@ -83,4 +83,28 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   window.addEventListener("scroll", onScroll);
+
+  // === VIDEO AUTO-PAUSE (new) ===
+  // When one video plays, pause all others.
+  const videos = Array.from(document.querySelectorAll("video"));
+  if (videos.length) {
+    videos.forEach((vid) => {
+      // Pause others on play
+      vid.addEventListener("play", () => {
+        videos.forEach((other) => {
+          if (other !== vid && !other.paused) {
+            try { other.pause(); } catch {}
+          }
+        });
+      });
+      // If user puts one into Picture-in-Picture, pause others
+      vid.addEventListener?.("enterpictureinpicture", () => {
+        videos.forEach((other) => {
+          if (other !== vid && !other.paused) {
+            try { other.pause(); } catch {}
+          }
+        });
+      });
+    });
+  }
 });
