@@ -1,32 +1,31 @@
-// Cache elements
+/* ================================
+   main.js — theme + footer year
+   ================================ */
+
 const root = document.documentElement;
 const toggle = document.getElementById("themeToggle");
 
-// Apply a theme and persist it
+// Apply theme & persist
 function setMode(mode) {
   if (mode === "dark") {
     root.classList.add("dark");
-    if (toggle) toggle.checked = true; // knob right
+    if (toggle) toggle.checked = true;
   } else {
     root.classList.remove("dark");
-    if (toggle) toggle.checked = false; // knob left
+    if (toggle) toggle.checked = false;
   }
-  localStorage.theme = mode;
+  try {
+    localStorage.setItem("theme", mode);
+  } catch {}
 }
 
-// Decide initial theme:
-// 1) Use saved preference if it exists
-// 2) Otherwise, follow OS preference (prefers-color-scheme)
-// 3) Default to light
+// Sync toggle on load (default dark if nothing saved)
 (() => {
-  const saved = localStorage.theme;
-  if (saved === "dark" || saved === "light") {
-    setMode(saved);
-  } else if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) {
-    setMode("dark");
-  } else {
-    setMode("light");
-  }
+  let saved = null;
+  try {
+    saved = localStorage.getItem("theme");
+  } catch {}
+  if (toggle) toggle.checked = saved ? saved === "dark" : true;
 })();
 
 // Toggle on click

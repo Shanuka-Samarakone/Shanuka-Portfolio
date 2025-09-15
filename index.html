@@ -4,19 +4,64 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Shanuka Samarakone — Portfolio</title>
+
+    <!-- 0) Set initial theme BEFORE CSS loads (default: dark unless saved light) -->
+    <script>
+      (function () {
+        try {
+          const saved = localStorage.getItem("theme");
+          if (saved === "light") {
+            document.documentElement.classList.remove("dark");
+          } else {
+            document.documentElement.classList.add("dark"); // default dark
+          }
+        } catch (_) {
+          document.documentElement.classList.add("dark");
+        }
+      })();
+    </script>
+
+    <!-- 1) Tailwind: use class-based dark mode -->
+    <script>
+      window.tailwind = { config: { darkMode: "class" } };
+    </script>
     <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap"
       rel="stylesheet"
     />
 
-    <!-- moved custom styles to an external file -->
+    <!-- Optional external CSS & JS (your split files) -->
     <link rel="stylesheet" href="./css/styles.css" />
-
-    <!-- moved JS to an external file -->
     <script src="./js/main.js" defer></script>
+
+    <style>
+      :root {
+        --brand: #6c5ce7;
+        --accent: #ffb020;
+      }
+      html.dark {
+        --brand: #ef4444;
+        --accent: #ffffff;
+      }
+      body {
+        font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial,
+          sans-serif;
+      }
+      .card {
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+      }
+      .card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+      }
+    </style>
   </head>
+
+  <!-- Body drives the whole-page theme -->
   <body class="bg-white text-slate-900 dark:bg-black dark:text-white">
     <!-- Header -->
     <header
@@ -30,7 +75,7 @@
           <span class="text-[color:var(--brand)]">Shanuka</span> Samarakone
         </a>
 
-        <!-- Nav -->
+        <!-- Nav (links already target section IDs; smooth via html.scroll-smooth) -->
         <nav class="hidden md:flex gap-6 text-sm font-semibold">
           <a href="#about" class="hover:text-[color:var(--brand)]">Education</a>
           <a href="#projects" class="hover:text-[color:var(--brand)]"
@@ -53,7 +98,7 @@
             Contact Me!
           </a>
 
-          <!-- Clean theme toggle switch (no icons) -->
+          <!-- Theme toggle -->
           <label
             for="themeToggle"
             class="inline-flex items-center cursor-pointer select-none"
@@ -77,9 +122,9 @@
     </header>
 
     <!-- Hero -->
-    <section class="relative overflow-hidden bg-white dark:bg-black">
+    <section class="relative overflow-hidden scroll-mt-24">
       <div
-        class="max-w-7xl mx-auto px-4 sm:px-6 py-20 grid md:grid-cols-2 gap-12 items-center"
+        class="max-w-7xl mx-auto px-4 sm:px-6 py-16 grid md:grid-cols-2 gap-10 items-center"
       >
         <!-- Text column -->
         <div class="md:pr-8">
@@ -99,8 +144,8 @@
             class="mt-4 text-slate-600 dark:text-slate-300 max-w-prose text-justify leading-relaxed"
           >
             Recent BSc (Hons) Computer Science (Artificial Intelligence)
-            graduate from Brunel University London (2:1). Passionate about
-            software engineering and AI, with hands-on experience across
+            graduate from Brunel University London with a classification of Upper Second Class Honours (2:1). 
+            Passionate about software engineering and AI, with hands-on experience across
             academic projects (including an AI-driven music therapy app and a 2D
             platformer). Strong foundation in programming, system design and
             Agile project management.
@@ -133,17 +178,18 @@
             >
           </div>
         </div>
-        
-        <!-- Image column (single-color frame via --brand) -->
-        <div class="relative md:pl-8 lg:pl-16">
+
+        <!-- Image column -->
+        <div class="relative">
           <div
-            class="rounded-[28px] p-2 bg-[color:var(--brand)] translate-x-2 md:translate-x-6"
+            class="mx-auto rounded-[28px] p-2 bg-[color:var(--brand)]
+                   max-w-[92%] sm:max-w-[420px] md:max-w-[460px]"
           >
             <img
-              src="./assets/profile1.jpg"
+              src="./assets/profile.jpg"
               onerror="this.onerror=null;this.src='https://placehold.co/800x1000?text=Your+Photo';"
               alt="Shanuka Samarakone"
-              class="rounded-[24px] aspect-[4/5] object-cover w-full bg-slate-200"
+              class="rounded-[24px] aspect-[4/5] object-cover w-full bg-slate-200 dark:bg-slate-800"
             />
           </div>
         </div>
@@ -151,14 +197,14 @@
     </section>
 
     <!-- Education -->
-    <section id="about" class="bg-slate-50 dark:bg-zinc-900">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 py-16">
+    <section id="about" class="scroll-mt-24">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 py-10">
         <h2 class="text-2xl font-extrabold">Education</h2>
 
-        <div class="mt-8 space-y-6">
+        <div class="mt-6 space-y-5">
           <!-- Degree -->
           <div
-            class="rounded-2xl border border-slate-200 dark:border-white/10 p-5 bg-white dark:bg-zinc-950"
+            class="rounded-2xl border border-slate-200/60 dark:border-white/10 p-5 bg-transparent"
           >
             <div class="font-semibold">
               BSc (Hons) Computer Science (Artificial Intelligence) — Brunel
@@ -171,7 +217,7 @@
 
           <!-- A-Levels -->
           <div
-            class="rounded-2xl border border-slate-200 dark:border-white/10 p-5 bg-white dark:bg-zinc-950"
+            class="rounded-2xl border border-slate-200/60 dark:border-white/10 p-5 bg-transparent"
           >
             <div class="font-semibold">
               GCE Advanced Level — Trinity College Kandy, Sri Lanka
@@ -189,7 +235,7 @@
 
           <!-- Certificate -->
           <div
-            class="rounded-2xl border border-slate-200 dark:border-white/10 p-5 bg-white dark:bg-zinc-950"
+            class="rounded-2xl border border-slate-200/60 dark:border-white/10 p-5 bg-transparent"
           >
             <div class="font-semibold">
               Certificate of Higher Education in Computer Science — NIBM, Sri
@@ -204,8 +250,8 @@
     </section>
 
     <!-- Projects -->
-    <section id="projects" class="bg-white dark:bg-black py-16">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <section id="projects" class="scroll-mt-24">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 py-10">
         <div class="flex items-end justify-between gap-4">
           <div>
             <h2 class="text-2xl font-extrabold">Projects</h2>
@@ -215,10 +261,10 @@
           >
         </div>
 
-        <div class="mt-8 grid md:grid-cols-3 gap-6">
+        <div class="mt-6 grid md:grid-cols-3 gap-5">
           <!-- Project 1 -->
           <article
-            class="card rounded-2xl overflow-hidden border border-slate-200 dark:border-white/10 bg-white dark:bg-zinc-950"
+            class="card rounded-2xl overflow-hidden border border-slate-200/60 dark:border-white/10 bg-transparent"
           >
             <img
               src="https://placehold.co/1200x600?text=Adaptive+Harmonies+AI"
@@ -234,20 +280,16 @@
                 scores with K-Means to adapt playlists.
               </p>
               <div class="mt-3 flex flex-wrap gap-2 text-xs">
-                <span
-                  class="px-2 py-1 rounded-full bg-slate-100 dark:bg-zinc-800"
+                <span class="px-2 py-1 rounded-full bg-slate-100 dark:bg-zinc-800"
                   >Flutter</span
                 >
-                <span
-                  class="px-2 py-1 rounded-full bg-slate-100 dark:bg-zinc-800"
+                <span class="px-2 py-1 rounded-full bg-slate-100 dark:bg-zinc-800"
                   >Node/Express</span
                 >
-                <span
-                  class="px-2 py-1 rounded-full bg-slate-100 dark:bg-zinc-800"
+                <span class="px-2 py-1 rounded-full bg-slate-100 dark:bg-zinc-800"
                   >MySQL</span
                 >
-                <span
-                  class="px-2 py-1 rounded-full bg-slate-100 dark:bg-zinc-800"
+                <span class="px-2 py-1 rounded-full bg-slate-100 dark:bg-zinc-800"
                   >Python</span
                 >
               </div>
@@ -256,7 +298,7 @@
 
           <!-- Project 2 -->
           <article
-            class="card rounded-2xl overflow-hidden border border-slate-200 dark:border-white/10 bg-white dark:bg-zinc-950"
+            class="card rounded-2xl overflow-hidden border border-slate-200/60 dark:border-white/10 bg-transparent"
           >
             <img
               src="https://placehold.co/1200x600?text=Quality+Education+Web+App"
@@ -272,20 +314,16 @@
                 tools; React + Spring Boot + MySQL.
               </p>
               <div class="mt-3 flex flex-wrap gap-2 text-xs">
-                <span
-                  class="px-2 py-1 rounded-full bg-slate-100 dark:bg-zinc-800"
+                <span class="px-2 py-1 rounded-full bg-slate-100 dark:bg-zinc-800"
                   >React</span
                 >
-                <span
-                  class="px-2 py-1 rounded-full bg-slate-100 dark:bg-zinc-800"
+                <span class="px-2 py-1 rounded-full bg-slate-100 dark:bg-zinc-800"
                   >Spring Boot</span
                 >
-                <span
-                  class="px-2 py-1 rounded-full bg-slate-100 dark:bg-zinc-800"
+                <span class="px-2 py-1 rounded-full bg-slate-100 dark:bg-zinc-800"
                   >MySQL</span
                 >
-                <span
-                  class="px-2 py-1 rounded-full bg-slate-100 dark:bg-zinc-800"
+                <span class="px-2 py-1 rounded-full bg-slate-100 dark:bg-zinc-800"
                   >Agile</span
                 >
               </div>
@@ -294,7 +332,7 @@
 
           <!-- Project 3 -->
           <article
-            class="card rounded-2xl overflow-hidden border border-slate-200 dark:border-white/10 bg-white dark:bg-zinc-950"
+            class="card rounded-2xl overflow-hidden border border-slate-200/60 dark:border-white/10 bg-transparent"
           >
             <img
               src="https://placehold.co/1200x600?text=Brunel+City+Airport+System"
@@ -310,16 +348,13 @@
                 diagrams.
               </p>
               <div class="mt-3 flex flex-wrap gap-2 text-xs">
-                <span
-                  class="px-2 py-1 rounded-full bg-slate-100 dark:bg-zinc-800"
+                <span class="px-2 py-1 rounded-full bg-slate-100 dark:bg-zinc-800"
                   >Java</span
                 >
-                <span
-                  class="px-2 py-1 rounded-full bg-slate-100 dark:bg-zinc-800"
+                <span class="px-2 py-1 rounded-full bg-slate-100 dark:bg-zinc-800"
                   >Figma</span
                 >
-                <span
-                  class="px-2 py-1 rounded-full bg-slate-100 dark:bg-zinc-800"
+                <span class="px-2 py-1 rounded-full bg-slate-100 dark:bg-zinc-800"
                   >Diagrams</span
                 >
               </div>
@@ -330,101 +365,73 @@
     </section>
 
     <!-- Skills -->
-    <section id="skills" class="bg-slate-50 dark:bg-zinc-900">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 py-16">
+    <section id="skills" class="scroll-mt-24">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 py-10">
         <h2 class="text-2xl font-extrabold">Skills</h2>
 
         <div class="mt-8 grid lg:grid-cols-2 gap-6">
           <!-- Programming Languages -->
-          <div class="card rounded-2xl border p-6 border-white/10 bg-zinc-950">
+          <div class="card rounded-2xl border p-6 border-slate-200/60 dark:border-white/10 bg-transparent">
             <h3 class="font-bold">Programming Languages</h3>
-            <div class="mt-3 flex flex-wrap gap-2 text-sm text-slate-300">
-              <span class="px-3 py-1 rounded-full bg-zinc-800">Python</span>
-              <span class="px-3 py-1 rounded-full bg-zinc-800">Java</span>
-              <span class="px-3 py-1 rounded-full bg-zinc-800">JavaScript</span>
-              <span class="px-3 py-1 rounded-full bg-zinc-800">Dart</span>
-              <span class="px-3 py-1 rounded-full bg-zinc-800">SQL</span>
-              <span class="px-3 py-1 rounded-full bg-zinc-800">HTML</span>
-              <span class="px-3 py-1 rounded-full bg-zinc-800">CSS</span>
+            <div class="mt-3 flex flex-wrap gap-2 text-sm text-slate-700 dark:text-slate-300">
+              <span class="px-3 py-1 rounded-full bg-slate-100 dark:bg-zinc-800">Python</span>
+              <span class="px-3 py-1 rounded-full bg-slate-100 dark:bg-zinc-800">Java</span>
+              <span class="px-3 py-1 rounded-full bg-slate-100 dark:bg-zinc-800">JavaScript</span>
+              <span class="px-3 py-1 rounded-full bg-slate-100 dark:bg-zinc-800">Dart</span>
+              <span class="px-3 py-1 rounded-full bg-slate-100 dark:bg-zinc-800">SQL</span>
+              <span class="px-3 py-1 rounded-full bg-slate-100 dark:bg-zinc-800">HTML</span>
+              <span class="px-3 py-1 rounded-full bg-slate-100 dark:bg-zinc-800">CSS</span>
             </div>
           </div>
 
           <!-- Frameworks & Libraries -->
-          <div class="card rounded-2xl border p-6 border-white/10 bg-zinc-950">
+          <div class="card rounded-2xl border p-6 border-slate-200/60 dark:border-white/10 bg-transparent">
             <h3 class="font-bold">Frameworks & Libraries</h3>
-            <div class="mt-3 flex flex-wrap gap-2 text-sm text-slate-300">
-              <span class="px-3 py-1 rounded-full bg-zinc-800">React</span>
-              <span class="px-3 py-1 rounded-full bg-zinc-800">Flutter</span>
-              <span class="px-3 py-1 rounded-full bg-zinc-800">Node.js</span>
-              <span class="px-3 py-1 rounded-full bg-zinc-800">Express</span>
-              <span class="px-3 py-1 rounded-full bg-zinc-800"
-                >Spring Boot</span
-              >
+            <div class="mt-3 flex flex-wrap gap-2 text-sm text-slate-700 dark:text-slate-300">
+              <span class="px-3 py-1 rounded-full bg-slate-100 dark:bg-zinc-800">React</span>
+              <span class="px-3 py-1 rounded-full bg-slate-100 dark:bg-zinc-800">Flutter</span>
+              <span class="px-3 py-1 rounded-full bg-slate-100 dark:bg-zinc-800">Node.js</span>
+              <span class="px-3 py-1 rounded-full bg-slate-100 dark:bg-zinc-800">Express</span>
+              <span class="px-3 py-1 rounded-full bg-slate-100 dark:bg-zinc-800">Spring Boot</span>
             </div>
           </div>
 
           <!-- Databases -->
-          <div class="card rounded-2xl border p-6 border-white/10 bg-zinc-950">
+          <div class="card rounded-2xl border p-6 border-slate-200/60 dark:border-white/10 bg-transparent">
             <h3 class="font-bold">Databases</h3>
-            <div class="mt-3 flex flex-wrap gap-2 text-sm text-slate-300">
-              <span class="px-3 py-1 rounded-full bg-zinc-800">MySQL</span>
+            <div class="mt-3 flex flex-wrap gap-2 text-sm text-slate-700 dark:text-slate-300">
+              <span class="px-3 py-1 rounded-full bg-slate-100 dark:bg-zinc-800">MySQL</span>
             </div>
           </div>
 
           <!-- Tools -->
-          <div class="card rounded-2xl border p-6 border-white/10 bg-zinc-950">
+          <div class="card rounded-2xl border p-6 border-slate-200/60 dark:border-white/10 bg-transparent">
             <h3 class="font-bold">Tools</h3>
-            <div class="mt-3 flex flex-wrap gap-2 text-sm text-slate-300">
-              <span class="px-3 py-1 rounded-full bg-zinc-800"
-                >Git & GitHub</span
-              >
-              <span class="px-3 py-1 rounded-full bg-zinc-800">Postman</span>
-              <span class="px-3 py-1 rounded-full bg-zinc-800">Figma</span>
-              <span class="px-3 py-1 rounded-full bg-zinc-800"
-                >Android Studio</span
-              >
-              <span class="px-3 py-1 rounded-full bg-zinc-800"
-                >Visual Studio Code</span
-              >
-              <span class="px-3 py-1 rounded-full bg-zinc-800"
-                >app.diagrams.net</span
-              >
+            <div class="mt-3 flex flex-wrap gap-2 text-sm text-slate-700 dark:text-slate-300">
+              <span class="px-3 py-1 rounded-full bg-slate-100 dark:bg-zinc-800">Git & GitHub</span>
+              <span class="px-3 py-1 rounded-full bg-slate-100 dark:bg-zinc-800">Postman</span>
+              <span class="px-3 py-1 rounded-full bg-slate-100 dark:bg-zinc-800">Figma</span>
+              <span class="px-3 py-1 rounded-full bg-slate-100 dark:bg-zinc-800">Android Studio</span>
+              <span class="px-3 py-1 rounded-full bg-slate-100 dark:bg-zinc-800">Visual Studio Code</span>
+              <span class="px-3 py-1 rounded-full bg-slate-100 dark:bg-zinc-800">app.diagrams.net</span>
             </div>
           </div>
 
           <!-- Soft Skills -->
           <div
-            class="card rounded-2xl border p-6 border-white/10 bg-zinc-950 lg:col-span-2"
+            class="card rounded-2xl border p-6 border-slate-200/60 dark:border-white/10 bg-transparent lg:col-span-2"
           >
             <h3 class="font-bold">Soft Skills</h3>
-            <div class="mt-3 flex flex-wrap gap-2 text-sm text-slate-300">
-              <span class="px-3 py-1 rounded-full bg-zinc-800"
-                >Teamwork & Leadership</span
-              >
-              <span class="px-3 py-1 rounded-full bg-zinc-800"
-                >Communication</span
-              >
-              <span class="px-3 py-1 rounded-full bg-zinc-800"
-                >Project Management</span
-              >
-              <span class="px-3 py-1 rounded-full bg-zinc-800"
-                >Event Organisation</span
-              >
-              <span class="px-3 py-1 rounded-full bg-zinc-800"
-                >Active Listening</span
-              >
-              <span class="px-3 py-1 rounded-full bg-zinc-800"
-                >Problem Solving</span
-              >
-              <span class="px-3 py-1 rounded-full bg-zinc-800"
-                >Adaptability</span
-              >
-              <span class="px-3 py-1 rounded-full bg-zinc-800"
-                >Time Management</span
-              >
-              <span class="px-3 py-1 rounded-full bg-zinc-800"
-                >Stakeholder Management</span
-              >
+            <div class="mt-3 flex flex-wrap gap-2 text-sm text-slate-700 dark:text-slate-300">
+              <span class="px-3 py-1 rounded-full bg-slate-100 dark:bg-zinc-800">Teamwork & Leadership</span>
+              <span class="px-3 py-1 rounded-full bg-slate-100 dark:bg-zinc-800">Communication</span>
+              <span class="px-3 py-1 rounded-full bg-slate-100 dark:bg-zinc-800">Project Management</span>
+              <span class="px-3 py-1 rounded-full bg-slate-100 dark:bg-zinc-800">Event Organisation</span>
+              <span class="px-3 py-1 rounded-full bg-slate-100 dark:bg-zinc-800">Active Listening</span>
+              <span class="px-3 py-1 rounded-full bg-slate-100 dark:bg-zinc-800">Problem Solving</span>
+              <span class="px-3 py-1 rounded-full bg-slate-100 dark:bg-zinc-800">Adaptability</span>
+              <span class="px-3 py-1 rounded-full bg-slate-100 dark:bg-zinc-800">Time Management</span>
+              <span class="px-3 py-1 rounded-full bg-slate-100 dark:bg-zinc-800">Stakeholder Management</span>
             </div>
           </div>
         </div>
@@ -432,13 +439,10 @@
     </section>
 
     <!-- Experience -->
-    <section
-      id="experience"
-      class="bg-black text-white dark:bg-black dark:text-white py-16"
-    >
-      <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <section id="experience" class="scroll-mt-24">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 py-10">
         <h2 class="text-2xl font-extrabold">Experience</h2>
-        <div class="mt-8 space-y-8">
+        <div class="mt-6 space-y-8">
           <!-- Retail Customer Service Manager -->
           <div class="relative pl-6">
             <div
@@ -447,33 +451,23 @@
             <h3 class="font-bold">
               Retail Customer Service Manager · Ladbrokes / Corals
             </h3>
-            <p class="text-sm text-slate-400">
+            <p class="text-sm text-slate-500 dark:text-slate-400">
               Apr 2023 – Present · Uxbridge, UK
             </p>
 
             <!-- Brief description -->
-            <p class="mt-2 text-sm text-slate-300 text-justify">
+            <p class="mt-2 text-sm text-slate-700 dark:text-slate-300 text-justify">
               Responsible for day-to-day operations, customer support, cash
               handling and product promotion in a fast-paced environment.
             </p>
 
             <!-- Key Skills -->
             <div class="mt-3 flex flex-wrap gap-2 text-xs">
-              <span class="px-2 py-1 rounded-full border border-white/20"
-                >Customer Service</span
-              >
-              <span class="px-2 py-1 rounded-full border border-white/20"
-                >Teamwork</span
-              >
-              <span class="px-2 py-1 rounded-full border border-white/20"
-                >Time Management</span
-              >
-              <span class="px-2 py-1 rounded-full border border-white/20"
-                >Problem Solving</span
-              >
-              <span class="px-2 py-1 rounded-full border border-white/20"
-                >Adaptability</span
-              >
+              <span class="px-2 py-1 rounded-full border border-slate-300 dark:border-white/20">Customer Service</span>
+              <span class="px-2 py-1 rounded-full border border-slate-300 dark:border-white/20">Teamwork</span>
+              <span class="px-2 py-1 rounded-full border border-slate-300 dark:border-white/20">Time Management</span>
+              <span class="px-2 py-1 rounded-full border border-slate-300 dark:border-white/20">Problem Solving</span>
+              <span class="px-2 py-1 rounded-full border border-slate-300 dark:border-white/20">Adaptability</span>
             </div>
           </div>
 
@@ -485,12 +479,12 @@
             <h3 class="font-bold">
               CSR & Sustainable Business Assistant · Hatton National Bank PLC
             </h3>
-            <p class="text-sm text-slate-400">
+            <p class="text-sm text-slate-500 dark:text-slate-400">
               Jul 2022 – Dec 2022 · Colombo, Sri Lanka
             </p>
 
             <!-- Brief description -->
-            <p class="mt-2 text-sm text-slate-300 text-justify">
+            <p class="mt-2 text-sm text-slate-700 dark:text-slate-300 text-justify">
               Led sustainable business initiatives, including the 2022 GHG
               emissions assessment and management of the Smart Carbon Calculator
               database.
@@ -501,21 +495,11 @@
 
             <!-- Key Skills -->
             <div class="mt-3 flex flex-wrap gap-2 text-xs">
-              <span class="px-2 py-1 rounded-full border border-white/20"
-                >Sustainability</span
-              >
-              <span class="px-2 py-1 rounded-full border border-white/20"
-                >Data Analysis</span
-              >
-              <span class="px-2 py-1 rounded-full border border-white/20"
-                >Stakeholder Management</span
-              >
-              <span class="px-2 py-1 rounded-full border border-white/20"
-                >Project Delivery</span
-              >
-              <span class="px-2 py-1 rounded-full border border-white/20"
-                >Communication</span
-              >
+              <span class="px-2 py-1 rounded-full border border-slate-300 dark:border-white/20">Sustainability</span>
+              <span class="px-2 py-1 rounded-full border border-slate-300 dark:border-white/20">Data Analysis</span>
+              <span class="px-2 py-1 rounded-full border border-slate-300 dark:border-white/20">Stakeholder Management</span>
+              <span class="px-2 py-1 rounded-full border border-slate-300 dark:border-white/20">Project Delivery</span>
+              <span class="px-2 py-1 rounded-full border border-slate-300 dark:border-white/20">Communication</span>
             </div>
           </div>
         </div>
@@ -523,29 +507,29 @@
     </section>
 
     <!-- Awards-->
-    <section id="awards" class="bg-slate-50 dark:bg-zinc-900">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 py-16">
+    <section id="awards" class="scroll-mt-24">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 py-10">
         <h2 class="text-2xl font-extrabold">Awards</h2>
-        <ul class="mt-6 grid sm:grid-cols-2 gap-4 text-sm">
+        <ul class="mt-5 grid sm:grid-cols-2 gap-3 text-sm">
           <li
-            class="card rounded-2xl border p-5 border-slate-200 dark:border-white/10 bg-white dark:bg-zinc-950"
+            class="card rounded-2xl border p-5 border-slate-200/60 dark:border-white/10 bg-transparent"
           >
             Collective Student Ambassador Award | Brunel Pathway College London
           </li>
 
           <li
-            class="card rounded-2xl border p-5 border-slate-200 dark:border-white/10 bg-white dark:bg-zinc-950"
+            class="card rounded-2xl border p-5 border-slate-200/60 dark:border-white/10 bg-transparent"
           >
             Student Engagment and Participation Award | Brunel Pathway College
             London
           </li>
           <li
-            class="card rounded-2xl border p-5 border-slate-200 dark:border-white/10 bg-white dark:bg-zinc-950"
+            class="card rounded-2xl border p-5 border-slate-200/60 dark:border-white/10 bg-transparent"
           >
             Independent Learner Award | Brunel Pathway College London
           </li>
           <li
-            class="card rounded-2xl border p-5 border-slate-200 dark:border-white/10 bg-white dark:bg-zinc-950"
+            class="card rounded-2xl border p-5 border-slate-200/60 dark:border-white/10 bg-transparent"
           >
             Chorister of the Year Award | Trinity College Kandy
           </li>
@@ -554,13 +538,10 @@
     </section>
 
     <!-- Contact -->
-    <section
-      id="contact"
-      class="bg-gradient-to-b from-white to-slate-50 dark:from-black dark:to-zinc-900 py-16"
-    >
-      <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <section id="contact" class="scroll-mt-24">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 py-10">
         <div
-          class="rounded-3xl p-8 md:p-12 border border-slate-200 dark:border-white/10 bg-white dark:bg-zinc-950"
+          class="rounded-3xl p-8 md:p-12 border border-slate-200/60 dark:border-white/10 bg-transparent"
         >
           <h2 class="text-2xl font-extrabold">Let’s have a Chat!</h2>
           <p class="mt-2 text-slate-600 dark:text-slate-300">
@@ -579,7 +560,7 @@
             >
           </div>
         </div>
-        <p class="mt-6 text-xs text-slate-500 dark:text-slate-400">
+        <p class="mt-5 text-xs text-slate-500 dark:text-slate-400">
           © <span id="year"></span> Shanuka Samarakone
         </p>
       </div>
