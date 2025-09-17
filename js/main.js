@@ -1,5 +1,5 @@
 // ================================
-// main.js — theme toggle + scrollspy
+// main.js — theme toggle + scrollspy + mobile nav + video autopause
 // ================================
 
 // === THEME TOGGLE ===
@@ -46,9 +46,10 @@ const y = document.getElementById("year");
 if (y) y.textContent = new Date().getFullYear();
 
 
-// === SCROLLSPY ===
+// === SCROLLSPY + MOBILE NAV + VIDEO AUTOPAUSE ===
 
 document.addEventListener("DOMContentLoaded", () => {
+  // ----- SCROLLSPY -----
   const sections = document.querySelectorAll("section[id]");
   const navLinks = document.querySelectorAll("nav a[href^='#']");
 
@@ -84,12 +85,50 @@ document.addEventListener("DOMContentLoaded", () => {
 
   window.addEventListener("scroll", onScroll);
 
-  // === VIDEO AUTO-PAUSE (new) ===
+  // ----- MOBILE NAV TOGGLE -----
+  const navToggleBtn = document.getElementById("navToggle");
+  const mobileNav = document.getElementById("primaryNavMobile");
+  const iconHamburger = document.getElementById("iconHamburger");
+  const iconClose = document.getElementById("iconClose");
+
+  function setMobileNav(open) {
+    if (!mobileNav || !navToggleBtn) return;
+    mobileNav.classList.toggle("hidden", !open);
+    navToggleBtn.setAttribute("aria-expanded", String(open));
+    if (iconHamburger) iconHamburger.classList.toggle("hidden", open);
+    if (iconClose) iconClose.classList.toggle("hidden", !open);
+    document.body.classList.toggle("overflow-hidden", open); // lock scroll when open
+  }
+
+  if (navToggleBtn) {
+    navToggleBtn.addEventListener("click", () => {
+      const willOpen = mobileNav?.classList.contains("hidden");
+      setMobileNav(!!willOpen);
+    });
+  }
+
+  // Close menu when a mobile nav link is tapped
+  if (mobileNav) {
+    mobileNav.querySelectorAll("a[data-nav-link]").forEach((a) => {
+      a.addEventListener("click", () => setMobileNav(false));
+    });
+  }
+
+  // Close on Escape
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") setMobileNav(false);
+  });
+
+  // Close if resizing to desktop
+  window.addEventListener("resize", () => {
+    if (window.innerWidth >= 768) setMobileNav(false);
+  });
+
+  // ----- VIDEO AUTO-PAUSE -----
   // When one video plays, pause all others.
   const videos = Array.from(document.querySelectorAll("video"));
   if (videos.length) {
     videos.forEach((vid) => {
-      // Pause others on play
       vid.addEventListener("play", () => {
         videos.forEach((other) => {
           if (other !== vid && !other.paused) {
@@ -97,7 +136,7 @@ document.addEventListener("DOMContentLoaded", () => {
           }
         });
       });
-      // If user puts one into Picture-in-Picture, pause others
+      // If a video enters PiP, pause the others
       vid.addEventListener?.("enterpictureinpicture", () => {
         videos.forEach((other) => {
           if (other !== vid && !other.paused) {
